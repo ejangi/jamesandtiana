@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jamesandtiana</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+  	<title>James &amp; Tiana</title>
+  	<%= stylesheet_link_tag :all %>
+  	<%= javascript_include_tag :defaults %>
+  	<%= csrf_meta_tag %>
+	<%= yield :head %>
 </head>
-<body>
-
-<%= yield %>
-
+<body id="<%= controller.controller_name %>-<%= controller.action_name %>" class="<%= controller.controller_name %> <%= controller.action_name %>">
+	<div id="page">
+		<div id="masthead">
+			<div id="logo"><%= image_tag "logo.png", :alt => "James &amp; Tiana", :border => 0, :width => 260, :height => 136 %></div>
+		</div>
+		
+		<div id="content">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>
