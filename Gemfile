@@ -6,9 +6,8 @@ gem 'mysql'
 gem 'mysql2', '~> 0.2.7'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'authlogic'
-gem 'gemcutter'
 gem 'declarative_authorization'
-gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
+# gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 
 gem 'capistrano'
 
