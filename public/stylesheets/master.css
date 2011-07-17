@@ -60,22 +60,24 @@ body {
 	Masthead
 **/
 #masthead {
+	position: relative;
 	display: block;
 	padding: 10px 0;
 	text-align: center;
 	border-bottom: 1px solid #e0d7c5;
+	z-index: 100;
 }
 
 	#logo {
 		display: block;
+		padding: 0 0 10px 0;
 	}
 	
 	
 
 #feature-photo {
 	margin: 10px 0;
-	padding: 3px 0 13px 0;
-	border-bottom: 1px solid #e0d7c5;
+	padding: 3px 0;
 }
 
 	#feature-photo img {
@@ -85,9 +87,11 @@ body {
 
 
 #mainmenu {
+	position: relative;
 	display: block;
-	margin: -60px 0 10px 0;
+	margin: -60px 0 -11px 0;
 	font-size: 15px;
+	z-index: 101;
 }
 
 #mainmenu:after {
@@ -102,20 +106,21 @@ body {
 		display: block;
 		font-family: Georgia, Arial, sans-serif;
 		color: #c2b59b;
-		border: 1px dotted #e0d7c5;
+		background: #fcfbf9;
+		border: 1px solid #e0d7c5;
+		border-bottom: 0;
 		padding: 10px 20px;
 		text-decoration: none;
 	}
 	
 		#mainmenu a:hover {
-			border-style: solid;
 			background: #f7f3ea;
 			text-decoration: underline;
 		}
 		
 		#mainmenu a .title {
 			display:block;
-			margin-bottom: 2px;
+			margin-bottom: -3px;
 		}
 		
 		#mainmenu a .date {
@@ -131,4 +136,22 @@ body {
 	#menu-wedding {
 		float: right;
 		margin: 0 20px 0 0;
+	}
+	
+	
+	
+/**
+	Footer
+**/
+#footer {
+	display: block;
+	margin: 10px 0;
+	padding: 20px 0;
+	border-top: 1px solid #e0d7c5;
+}
+
+	#footer p {
+		font-size: 17px;
+		color: #c2b59b;
+		text-align: center;
 	}

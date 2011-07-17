@@ -6,19 +6,24 @@
   	<%= javascript_include_tag :defaults %>
   	<%= csrf_meta_tag %>
 	<%= yield :head %>
+	<link rel="icon" type="image/png" href="<%= image_path("favicon.png") %>" />
 </head>
 <body id="<%= controller.controller_name %>-<%= controller.action_name %>" class="<%= controller.controller_name %> <%= controller.action_name %>">
 	<div id="page">
 		<div id="masthead">
 			<div id="logo"><%= image_tag "logo.png", :alt => "James &amp; Tiana", :border => 0, :width => 250, :height => 141 %></div>
 			<div id="mainmenu">
-				<div id="menu-engagement"><%= link_to "<span class=\"title\">The Engagement</span><span class=\"date\">September 24</span>".html_safe, "#" %></div>
-				<div id="menu-wedding"><%= link_to "<span class=\"title\">The Wedding</span><span class=\"date\">January 6</span>".html_safe, "#" %></div>
+				<div id="menu-engagement"><%= link_to "<span class=\"title\"><img src=\"/images/the.engagement.png\" alt=\"The Engagement\" /></span><span class=\"date\">September 24</span>".html_safe, "#" %></div>
+				<div id="menu-wedding"><%= link_to "<span class=\"title\"><img src=\"/images/the.wedding.png\" alt=\"The Wedding\" /></span><span class=\"date\">January 6</span>".html_safe, "#" %></div>
 			</div>
 		</div>
 		
 		<div id="content">
 			<%= yield %>
+		</div>
+		
+		<div id="footer">
+			<p><%= image_tag("ecclesiastes.4.12.png", :alt => "A cord of three strands is not quickly broken. - Ecclesiastes 4:12") %></p>
 		</div>
 	</div>
 </body>
