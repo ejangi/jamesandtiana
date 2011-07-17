@@ -38,6 +38,15 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 /**
 	Page Layout
 **/
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: #fcfbf9;
+}
+
 #page {
 	display: block;
 	width: 960px;
@@ -52,9 +61,74 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 **/
 #masthead {
 	display: block;
+	padding: 10px 0;
 	text-align: center;
+	border-bottom: 1px solid #e0d7c5;
 }
 
 	#logo {
 		display: block;
+	}
+	
+	
+
+#feature-photo {
+	margin: 10px 0;
+	padding: 3px 0 13px 0;
+	border-bottom: 1px solid #e0d7c5;
+}
+
+	#feature-photo img {
+		display: block;
+	}
+
+
+
+#mainmenu {
+	display: block;
+	margin: -60px 0 10px 0;
+	font-size: 15px;
+}
+
+#mainmenu:after {
+    display: block;
+    clear: both;
+    content: ".";
+    height: 0;
+    visibility: hidden;
+}
+
+	#mainmenu a {
+		display: block;
+		font-family: Georgia, Arial, sans-serif;
+		color: #c2b59b;
+		border: 1px dotted #e0d7c5;
+		padding: 10px 20px;
+		text-decoration: none;
+	}
+	
+		#mainmenu a:hover {
+			border-style: solid;
+			background: #f7f3ea;
+			text-decoration: underline;
+		}
+		
+		#mainmenu a .title {
+			display:block;
+			margin-bottom: 2px;
+		}
+		
+		#mainmenu a .date {
+			display: block;
+			font-size: 12px;
+		}
+	
+	#menu-engagement {
+		float: left;
+		margin: 0 0 0 20px;
+	}
+	
+	#menu-wedding {
+		float: right;
+		margin: 0 20px 0 0;
 	}

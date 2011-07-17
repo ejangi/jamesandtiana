@@ -10,7 +10,11 @@
 <body id="<%= controller.controller_name %>-<%= controller.action_name %>" class="<%= controller.controller_name %> <%= controller.action_name %>">
 	<div id="page">
 		<div id="masthead">
-			<div id="logo"><%= image_tag "logo.png", :alt => "James &amp; Tiana", :border => 0, :width => 417, :height => 190 %></div>
+			<div id="logo"><%= image_tag "logo.png", :alt => "James &amp; Tiana", :border => 0, :width => 250, :height => 141 %></div>
+			<div id="mainmenu">
+				<div id="menu-engagement"><%= link_to "<span class=\"title\">The Engagement</span><span class=\"date\">September 24</span>".html_safe, "#" %></div>
+				<div id="menu-wedding"><%= link_to "<span class=\"title\">The Wedding</span><span class=\"date\">January 6</span>".html_safe, "#" %></div>
+			</div>
 		</div>
 		
 		<div id="content">
