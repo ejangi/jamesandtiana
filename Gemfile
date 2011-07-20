@@ -18,6 +18,15 @@ group :development, :test do
 	gem 'ZenTest'
 	gem 'autotest-rails'
 	gem 'autotest-growl'
+	gem 'rspec-rails'
+	
+	gem 'capybara'
+	gem 'database_cleaner'
+	gem 'cucumber-rails'
+	gem 'cucumber'
+	gem 'rspec-rails'
+	gem 'spork'
+	gem 'launchy'
 	
 	# rails generate jquery:install
 	# sudo install_name_tool -change libmysqlclient.16.dylib /usr/local/mysql/lib/libmysqlclient.16.dylib /Users/ejangi/.rvm/gems/ruby-1.8.7-p334/gems/mysql2-0.2.11/lib/mysql2/mysql2.bundle
