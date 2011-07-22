@@ -1,4 +1,5 @@
 Jamesandtiana::Application.routes.draw do
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,6 +56,21 @@ Jamesandtiana::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+  resources :users
+  resources :registries
+  
+  match ':registry', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry => /engagement|wedding/ }
+  match ':registry/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry => /engagement|wedding/ }
+  match ':registry/gifts(.:format)', :as => "gifts", :controller => "gifts", :action => "index", :constraints => { :registry => /engagement|wedding/ }
+  match ':registry/gifts/:id(.:format)', :as => "gifts", :controller => "gifts", :action => "show", :constraints => { :registry => /engagement|wedding/ }
+  match ':registry/gifts(/:id(/:action(.:format)))', :as => "gifts", :controller => "gifts", :constraints => { :registry => /engagement|wedding/ }
+  
+  resource :user_session
+  resource :account, :controller => "users"
+  
+  match 'login' => "user_sessions#new",      :as => :login
+  match 'logout' => "user_sessions#destroy", :as => :logout
   
   root :to => "home#index"
 end

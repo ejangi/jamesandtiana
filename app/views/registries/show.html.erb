@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @registry.title %>
+</p>
+
+<p>
+  <b>Introduction:</b>
+  <%= @registry.introduction %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%= @registry.when %>
+</p>
+
+
+<%= link_to 'Edit', edit_registry_path(@registry) %> |
+<%= link_to 'Back', registries_path %>
