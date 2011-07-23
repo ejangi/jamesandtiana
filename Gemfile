@@ -21,7 +21,7 @@ gem 'capistrano'
 #			./configure --prefix=/usr/local --with-bzlib=yes --with-fontconfig=yes --with-freetype=yes --with-gslib=yes --with-gvc=yes --with-jpeg=yes --with-jp2=yes --with-png=yes --with-tiff=yes
 #			make clean
 #			make
-#			åmake install
+#			make install
 gem 'rmagick'
 gem 'carrierwave'
 
