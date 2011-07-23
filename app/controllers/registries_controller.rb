@@ -84,13 +84,15 @@ class RegistriesController < ApplicationController
     end
   end
   
-  # GET /registries/1
-  # GET /registries/1.xml
+  # GET /registries/1/introduction
+  # GET /registries/1/introduction.xml
   def introduction
     @registry = Registry.find(@registry_id)
+    @user_session = UserSession.new
+    session[:return_to] = url_for(:registry => @registry.title.to_s.downcase)
 
     respond_to do |format|
-      format.html # preview.html.erb
+      format.html # introduction.html.erb
       format.xml  { render :xml => @registry }
     end
   end

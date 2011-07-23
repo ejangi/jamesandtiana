@@ -1,20 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div id="registry" class="registry <%= @registry.title.downcase %>">
+	<div id="registry-introduction">
+		<h1><%= @registry.title %></h1>
+		<h2><%= l @registry.when, :format => :short %></h2>
 
-<p>
-  <b>Title:</b>
-  <%= @registry.title %>
-</p>
-
-<p>
-  <b>Introduction:</b>
-  <%= @registry.introduction %>
-</p>
-
-<p>
-  <b>When:</b>
-  <%= @registry.when %>
-</p>
-
-
-<%= link_to 'Edit', edit_registry_path(@registry) %> |
-<%= link_to 'Back', registries_path %>
+	</div>
+	
+	<div id="registry-details">
+		<h1>Details</h1>
+	</div>
+</div>

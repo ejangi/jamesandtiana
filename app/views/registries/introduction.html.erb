@@ -1,4 +1,13 @@
-<h1><%= @registry.title %></h1>
-<h2><%= @registry.when %></h2>
+<div id="registry" class="registry <%= @registry.title.downcase %>">
+	<div id="registry-introduction">
+		<h1><%= @registry.title %></h1>
+		<h2><%= l @registry.when, :format => :short %></h2>
 
-<%= @registry.introduction.html_safe %>
+		<%= @registry.introduction.html_safe %>
+	</div>
+	
+	<div id="registry-login">
+		<h1>Please login, to get more details about the day</h1>
+		<%= render :partial => "user_sessions/form" %>
+	</div>
+</div>

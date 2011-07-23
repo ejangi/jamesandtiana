@@ -62,7 +62,7 @@ body {
 #masthead {
 	position: relative;
 	display: block;
-	padding: 10px 0;
+	padding: 0;
 	text-align: center;
 	border-bottom: 1px solid #e0d7c5;
 	z-index: 100;
@@ -73,23 +73,42 @@ body {
 		padding: 0 0 10px 0;
 	}
 	
-	
-
-#feature-photo {
-	margin: 10px 0;
-	padding: 3px 0;
-}
-
-	#feature-photo img {
-		display: block;
+		#logo a {
+			display: block;
+			width: 250px;
+			margin: 0 auto;
+			padding: 10px 20px;
+			border: 1px solid transparent;
+		}
+		
+			#logo a img {
+				border: 0;
+			}
+			
+			
+			
+	#home-btn {
+		position: absolute;
+		top: 45px;
+		left: 90px;
 	}
+	
+		#home-btn a {
+			color: #C2B59B;
+			text-decoration: none;
+		}
+		
+		#home-btn a:hover {
+			text-decoration: underline;
+		}
 
 
 
 #mainmenu {
 	position: relative;
 	display: block;
-	margin: -60px 0 -11px 0;
+	margin: -60px 0 -1px 0;
+	min-height: 64px;
 	font-size: 15px;
 	z-index: 101;
 }
@@ -108,7 +127,7 @@ body {
 		color: #c2b59b;
 		background: #fcfbf9;
 		border: 1px solid #e0d7c5;
-		border-bottom: 0;
+		border-bottom-width: 0px;
 		padding: 10px 20px;
 		text-decoration: none;
 	}
@@ -138,6 +157,60 @@ body {
 		margin: 0 20px 0 0;
 	}
 	
+	.hascontent #mainmenu a {
+		border-bottom-width: 1px;
+	}
+	
+	.hascontent #mainmenu .active a {
+		background: #FFF !important;
+		border-bottom-color: #FFF;
+	}
+	
+	
+	
+/**
+	Content
+**/
+#feature-photo {
+	padding: 13px 0;
+}
+
+	#feature-photo img {
+		display: block;
+	}
+	
+	
+	
+.hascontent #content {
+	padding: 10px 40px;
+	background: #FFF;
+}
+
+#registry {
+	display: block;
+}
+
+#registry:after {
+    display: block;
+    clear: both;
+    content: ".";
+    height: 0;
+    visibility: hidden;
+}
+
+	#registry-introduction {
+		display: block;
+		float: left;
+		width: 48%;
+	}
+	
+	#registry-login,
+	#registry-details {
+		display: block;
+		float: right;
+		width: 48%;
+	}
+	
 	
 	
 /**
@@ -145,7 +218,6 @@ body {
 **/
 #footer {
 	display: block;
-	margin: 10px 0;
 	padding: 20px 0;
 	border-top: 1px solid #e0d7c5;
 }

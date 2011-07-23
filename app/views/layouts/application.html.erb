@@ -8,14 +8,21 @@
 	<%= yield :head %>
 	<link rel="icon" type="image/png" href="<%= image_path("favicon.png") %>" />
 </head>
-<body id="<%= controller.controller_name %>-<%= controller.action_name %>" class="<%= controller.controller_name %> <%= controller.action_name %>">
+<body id="<%= controller.controller_name %>-<%= controller.action_name %>" class="<%= controller.controller_name %> <%= controller.action_name %><%= " hascontent" if is_registry? %>">
 	<div id="page">
 		<div id="masthead">
-			<div id="logo"><%= image_tag "logo.png", :alt => "James &amp; Tiana", :border => 0, :width => 250, :height => 141 %></div>
+			<div id="logo"><%= link_to(image_tag("logo.png", :alt => "James &amp; Tiana", :border => 0, :width => 250, :height => 141), root_url) %></div>
 			<div id="mainmenu">
-				<div id="menu-engagement"><%= link_to "<span class=\"title\"><img src=\"/images/the.engagement.png\" alt=\"The Engagement\" /></span><span class=\"date\">September 24</span>".html_safe, registry_home_path("engagement") %></div>
-				<div id="menu-wedding"><%= link_to "<span class=\"title\"><img src=\"/images/the.wedding.png\" alt=\"The Wedding\" /></span><span class=\"date\">January 6</span>".html_safe, registry_home_path("wedding") %></div>
+				<% if public? %>
+				<div id="menu-engagement"<%= ' class="active"'.html_safe if is_registry?('engagement') %>><%= link_to "<span class=\"title\"><img src=\"/images/the.engagement.png\" alt=\"The Engagement\" /></span><span class=\"date\">September 24</span>".html_safe, registry_home_path("engagement") %></div>
+				<div id="menu-wedding"<%= ' class="active"'.html_safe if is_registry?('wedding') %>><%= link_to "<span class=\"title\"><img src=\"/images/the.wedding.png\" alt=\"The Wedding\" /></span><span class=\"date\">January 6</span>".html_safe, registry_home_path("wedding") %></div>
+				<% end %>
 			</div>
+			<% if display_home? %>
+			<div id="home-btn">
+				<%= link_to("&laquo; Home".html_safe, root_url) %>
+			</div>
+			<% end %>
 		</div>
 		
 		<div id="content">
