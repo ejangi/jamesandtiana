@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110722093410) do
     t.string   "title"
     t.text     "introduction"
     t.datetime "when"
+    t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

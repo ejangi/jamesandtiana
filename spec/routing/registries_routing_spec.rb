@@ -30,6 +30,14 @@ describe RegistriesController do
     it "routes to #destroy" do
       delete("/registries/1").should route_to("registries#destroy", :id => "1")
     end
+    
+    it "routes to #engagement" do
+      get("/engagement").should route_to("registries#introduction", :registry => "engagement")
+    end
+    
+    it "routes to #wedding" do
+      get("/wedding").should route_to("registries#introduction", :registry => "wedding")
+    end
 
   end
 end

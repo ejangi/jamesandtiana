@@ -4,6 +4,7 @@ class CreateRegistries < ActiveRecord::Migration
       t.string      :title
       t.text        :introduction
       t.datetime    :when
+      t.string      :permalink
       t.timestamps
     end
   end

@@ -1,9 +1,29 @@
 module ApplicationHelper
   
   def public?
+    if ! Rails.env.production?
+      return true
+    end
+    
     today = DateTime.now
     release = DateTime.parse("2011-08-10 23:59:00")
-    return (Rails.env.production? && today == release)
+    return (today == release)
+  end
+  
+  def mainmenu
+    string = ''
+    registries = Registry.all
+    
+    registries.each do |registry|
+      image = registry.title.to_s.downcase.gsub(/[^a-z0-9]/, '.')
+      string << "<div id=\"menu-#{registry.permalink}\""
+      string << "class=\"active\"'".html_safe if is_registry?(registry.permalink)
+      string << ">"
+      string << link_to("<span class=\"title\"><img src=\"/images/#{image}.png\" alt=\"#{registry.title}\" /></span><span class=\"date\">September 24</span>".html_safe, registry_home_path(registry.permalink))
+      string << "</div>\n\t\t\t\t\t"
+    end
+
+    return string.html_safe
   end
   
   def registry_home_path(registry)
@@ -15,9 +35,9 @@ module ApplicationHelper
   end
   
   def is_registry?(registry=nil)
-    if !@registry.nil? && (@registry.title.to_s.downcase == registry.to_s.downcase)
+    if !@registry.nil? && (@registry.permalink == registry.to_s.downcase)
       true
-    elsif registry.nil? && !@registry.nil? && (Registry.titles_list.include?(@registry.title))
+    elsif registry.nil? && !@registry.nil? && (Registry.permalink_list.include?(@registry.permalink))
       true
     else
       false

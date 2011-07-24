@@ -6,9 +6,9 @@ class Registry < ActiveRecord::Base
     order("created_at ASC")
   }
   
-  def self.titles_list
+  def self.permalink_list
     registries = self.all
-    list = registries.collect { |r| r.title }
+    list = registries.collect { |r| r.permalink }
     return list
   end
 end

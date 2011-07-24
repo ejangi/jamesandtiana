@@ -89,7 +89,7 @@ class RegistriesController < ApplicationController
   def introduction
     @registry = Registry.find(@registry_id)
     @user_session = UserSession.new
-    session[:return_to] = url_for(:registry => @registry.title.to_s.downcase)
+    session[:return_to] = url_for(:registry => @registry.permalink)
 
     respond_to do |format|
       format.html # introduction.html.erb
@@ -101,9 +101,9 @@ class RegistriesController < ApplicationController
   
     def get_registry
       if params[:registry]
-        registry = params[:registry].to_s.capitalize
+        registry = params[:registry].to_s
         begin
-          record = Registry.find_by_title(registry)
+          record = Registry.find_by_permalink(registry)
           @registry_id = record.id
         rescue Exception => e
           back = e.backtrace.join("\n\t")

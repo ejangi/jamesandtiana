@@ -45,6 +45,7 @@ body {
 
 body {
 	background: #fcfbf9;
+	font-family: 'Old Standard TT', serif;
 }
 
 #page {
@@ -123,7 +124,6 @@ body {
 
 	#mainmenu a {
 		display: block;
-		font-family: Georgia, Arial, sans-serif;
 		color: #c2b59b;
 		background: #fcfbf9;
 		border: 1px solid #e0d7c5;
@@ -165,6 +165,78 @@ body {
 		background: #FFF !important;
 		border-bottom-color: #FFF;
 	}
+	
+	
+
+#submenu {
+	display: block;
+	margin: 10px 0 20px 0;
+	background: #fcfbf9;
+	border: 1px dotted #e0d7c5;
+	border-left-width: 0;
+	border-right-width: 0;
+	font-size: 17px;
+}	
+
+	#submenu-container {
+		position: relative;
+		left: -50%;
+		display: block;
+		float: right;
+		text-align: left;
+	}
+
+	#submenu:after {
+	    display: block;
+	    clear: both;
+	    content: ".";
+	    height: 0;
+	    visibility: hidden;
+	}
+
+		#submenu ul {
+			position: relative;
+			left: 50%;
+			margin: 0;
+			padding: 0;
+		}
+	
+		#submenu ul:after {
+		    display: block;
+		    clear: both;
+		    content: ".";
+		    height: 0;
+		    visibility: hidden;
+		}
+	
+			#submenu ul li {
+				position: relative;
+				display: block;
+				float: left;
+				margin: 0 10px 0 0;
+				padding: 0;
+			}
+		
+				#submenu ul li a {
+					position: relative;
+					display: block;
+					padding: 5px 10px;
+					color: #c2b59b;
+					text-decoration: none;
+					white-space: nowrap;
+					z-index: 10;
+				}
+				
+				#submenu ul li a:hover {
+					text-decoration: underline;
+				}
+				
+				#submenu ul li.active a {
+					background: #FFF;
+					border: 1px dotted #e0d7c5;
+					border-top-width: 0;
+					border-bottom-width: 0;
+				}
 	
 	
 	
@@ -220,6 +292,7 @@ body {
 	display: block;
 	padding: 20px 0;
 	border-top: 1px solid #e0d7c5;
+	text-align: center;
 }
 
 	#footer p {
@@ -227,3 +300,48 @@ body {
 		color: #c2b59b;
 		text-align: center;
 	}
+	
+	
+	
+/**
+	Mobile Version Mods
+**/
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+	#logo,
+	#logo a,
+	#logo img {
+		width: 125px;
+		height: 70px;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+	
+		#logo {
+			margin: -15px auto 20px auto;
+		}
+	
+	#page {
+		width: 480px;
+	}
+	
+	#mainmenu {
+		margin: 0 0 -1px 0;
+	}
+	
+	#feature-photo {
+		margin: 0 0 0 -50%;
+		overflow-x: hidden;
+	}
+	
+	#footer img {
+		display: none;
+	}
+	
+	#registry-introduction,
+	#registry-login,
+	#registry-details {
+		float: none;
+		width: auto !important;
+	}
+}

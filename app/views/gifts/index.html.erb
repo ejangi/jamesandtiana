@@ -1,29 +1,18 @@
-<h1>Listing gifts</h1>
+<%= render :partial => "registries/submenu" %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Store</th>
-    <th>Colour</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1><%= @registry.title %> Gift Registry</h1>
+
+<div id="gift-registry">
 
 <% @gifts.each do |gift| %>
-  <tr>
-    <td><%= gift.title %></td>
-    <td><%= gift.description %></td>
-    <td><%= gift.store %></td>
-    <td><%= gift.colour %></td>
-    <td><%= gift.quantity %></td>
-    <td><%= gift.price %></td>
-    <td><%= link_to 'Show', gift %></td>
-    <td><%= link_to 'Edit', edit_gift_path(gift) %></td>
-    <td><%= link_to 'Destroy', gift, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	<div id="gift-<%= gift.id %>" class="gift">
+    	<h2><%= gift.title %></h2>
+	    <div class="description"><%= gift.description %></div>
+	    <div class="store"><%= gift.store %></div>
+	    <div class="colour"><%= gift.colour %></div>
+	    <div class="quantity"><%= gift.quantity %></div>
+	    <div class="price"><%= gift.price %></div>
+	</div>
 <% end %>
-</table>
+
+</div>

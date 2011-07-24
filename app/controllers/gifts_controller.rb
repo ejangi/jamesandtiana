@@ -88,7 +88,7 @@ class GiftsController < ApplicationController
     def get_registry
       @registry_id = params[:registry]
       begin
-        @registry = Registry.find_by_title(@registry_id.to_s.capitalize)
+        @registry = Registry.find_by_permalink(@registry_id.to_s)
       rescue Exception => e
         back = e.backtrace.join("\n\t")
         s = "rescued_from:: gifts:get_registry(#{@registry_id}): #{e.inspect}\n#{back}"

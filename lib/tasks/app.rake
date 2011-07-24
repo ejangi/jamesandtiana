@@ -5,10 +5,10 @@ namespace :app do
     # INSERT BELOW
 
     [
-      { :title => "Engagement", :introduction => "", :when => "2011-09-24 14:00:00" },
-      { :title => "Wedding", :introduction => "", :when => "2012-01-06 15:00:00" }
+      { :title => "The Engagement", :introduction => "", :when => "2011-09-24 14:00:00", :permalink => "engagement" },
+      { :title => "The Wedding", :introduction => "", :when => "2012-01-06 15:00:00", :permalink => "wedding" }
     ].each do |attributes|
-      Registry.find_or_create_by_title(attributes)
+      Registry.find_or_create_by_permalink(attributes)
     end
     
     [
