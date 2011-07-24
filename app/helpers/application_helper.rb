@@ -48,4 +48,12 @@ module ApplicationHelper
     return !current_page?(root_path)
   end
   
+  def image_url(source)
+    abs_path = image_path(source)
+    unless abs_path =~ /^http/
+      abs_path = "#{request.protocol}#{request.host_with_port}#{abs_path}"
+    end
+   return abs_path
+  end
+  
 end
