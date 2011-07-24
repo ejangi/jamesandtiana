@@ -69,6 +69,8 @@ Jamesandtiana::Application.routes.draw do
   resource :user_session
   resource :account, :controller => "users"
   
+  match ':key', :controller => "UserSessions", :action => "quicklogin", :constraints => { :key => /[a-z0-9]{40}/ }
+  
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   

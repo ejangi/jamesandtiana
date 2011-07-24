@@ -14,7 +14,11 @@ namespace :app do
     [
       { :name => "James Angus", :phone => "0409359315", :email => "ejangidotcom@gmail.com", :street => "59 Almeida St", :suburb => "Indooroopilly", :postcode => "4068", :password => "433292", :password_confirmation => "433292" }
     ].each do |attributes|
-      User.find_or_create_by_email(attributes)
+      user = User.find_or_create_by_email(attributes)
+      registries = Registry.all
+      registries.each do |reg|
+        user.admit_to_registry(reg)
+      end
     end
   end
 end

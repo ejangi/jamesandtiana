@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter { |c| Authorization.current_user = current_user }
   
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :logged_in_url
 
   private
     def current_user_session
@@ -41,5 +41,9 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+    
+    def logged_in_url
+      return root_url
     end
 end

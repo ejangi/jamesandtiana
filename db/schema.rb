@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110722093410) do
+ActiveRecord::Schema.define(:version => 20110724084208) do
+
+  create_table "admissions", :force => true do |t|
+    t.integer  "registry_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contributions", :force => true do |t|
     t.integer  "registry_id"
@@ -62,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20110722093410) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "key"
   end
 
 end
