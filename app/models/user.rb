@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :contributions
   has_many :admissions
+  has_many :registries, :through => :admissions
   
   before_save :generate_key
   
