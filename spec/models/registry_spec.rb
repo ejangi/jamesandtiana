@@ -15,13 +15,13 @@ describe Registry do
   
   it "can list titles as an array" do
     [
-      { :title => "Engagement", :introduction => "", :when => "2011-09-24 14:00:00" },
-      { :title => "Wedding", :introduction => "", :when => "2012-01-06 15:00:00" }
+      { :title => "The Engagement", :introduction => "", :when => "2011-09-24 14:00:00", :permalink => "engagement" },
+      { :title => "The Wedding", :introduction => "", :when => "2012-01-06 15:00:00", :permalink => "wedding" }
     ].each do |attributes|
-      Registry.find_or_create_by_title(attributes)
+      Registry.find_or_create_by_permalink(attributes)
     end
 
-    Registry.titles_list.include?("Wedding").should == true
-    Registry.titles_list.include?("Engagement").should == true
+    Registry.permalink_list.include?("wedding").should == true
+    Registry.permalink_list.include?("engagement").should == true
   end
 end

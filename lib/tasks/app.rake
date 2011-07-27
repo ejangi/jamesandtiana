@@ -12,6 +12,12 @@ namespace :app do
     end
     
     [
+      { :name => "admin" }
+    ].each do |role|
+      Role.find_or_create_by_name(role)
+    end
+    
+    [
       { :name => "James Angus", :phone => "0409359315", :email => "ejangidotcom@gmail.com", :street => "59 Almeida St", :suburb => "Indooroopilly", :postcode => "4068", :password => "433292", :password_confirmation => "433292" }
     ].each do |attributes|
       user = User.find_or_create_by_email(attributes)
@@ -19,6 +25,7 @@ namespace :app do
       registries.each do |reg|
         user.admit_to_registry(reg)
       end
+      user.roles << Role.find_or_create_by_name(:admin)
     end
   end
 end

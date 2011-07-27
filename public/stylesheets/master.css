@@ -267,9 +267,19 @@ h2 small {
 	background: #FFF;
 }
 
+#content a {
+	color: #C2B59B;
+}
+
 h1 {
 	color: #a3894a;
 }
+
+	h1 span.new {
+		padding: 0 0 0 15px;
+		font-size: 13px;
+		font-weight: normal;
+	}
 
 h2 {
 	color: #a28d64;
@@ -354,6 +364,11 @@ form dl {
 		font-weight: normal;
 	}
 	
+		form .field_with_errors dt,
+		form .field_with_errors label {
+			color: #CC0000;
+		}
+	
 	form dt span.tip {
 		display: block;
 		font-weight: normal;
@@ -382,6 +397,12 @@ form dl {
 		-moz-box-shadow: inset 2px 2px 3px #eeeeee;
 		box-shadow: inset 2px 2px 3px #eeeeee;
 	}
+	
+		form .field_with_errors input[type="text"],
+		form .field_with_errors input[type="password"],
+		form .field_with_errors textarea {
+			border-color: #CC0000;
+		}
 	
 	form input[type="text"].short,
 	form input[type="password"].short {
@@ -431,6 +452,64 @@ form dl {
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3894a', endColorstr='#aa9857',GradientType=0 ); /* IE6-9 */
 		background: linear-gradient(top, #a3894a 0%,#aa9857 100%); /* W3C */
 	}
+	
+	
+	
+/**
+	Tables
+**/
+table {
+	width: 100%;
+}
+
+	table,
+	thead,
+	tbody,
+	tr,
+	th,
+	td {
+		border-collapse: collapse;
+		border: 1px dotted #e0d7c5;
+		text-align: left;
+	}
+	
+	th,
+	td {
+		padding: 5px 10px;
+	}
+	
+	
+	
+/**
+	Notices
+**/
+#notice {
+	display: block;
+	margin: 20px 0;
+	font-size: 16px;
+	text-align: center;
+}
+
+	#notice-container {
+		display:inline-block;
+		padding: 10px 20px;
+		background: #f7f3ea;
+		border: 1px solid #e0d7c5;
+		border-left-width: 0;
+		border-right-width: 0;
+	}
+	
+		#notice-container p,
+		#notice-container ul {
+			margin: 5px 0;
+		}
+		
+		
+
+#error_explanation,
+#error_explanation h2 {
+	color: #CC0000;
+}
 	
 	
 	

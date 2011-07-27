@@ -2,6 +2,8 @@ class RegistriesController < ApplicationController
   before_filter :get_registry
   before_filter :require_user, :except => [:introduction]
   
+  filter_access_to :all
+  
   # GET /registries
   # GET /registries.xml
   def index
@@ -89,7 +91,7 @@ class RegistriesController < ApplicationController
   def introduction
     @registry = Registry.find(@registry_id)
     @user_session = UserSession.new
-    session[:return_to] = url_for(:registry => @registry.permalink)
+    session[:return_to] = url_for(:registry_permalink => @registry.permalink)
 
     respond_to do |format|
       format.html # introduction.html.erb
@@ -100,8 +102,8 @@ class RegistriesController < ApplicationController
   private
   
     def get_registry
-      if params[:registry]
-        registry = params[:registry].to_s
+      if params[:registry_permalink]
+        registry = params[:registry_permalink].to_s
         begin
           record = Registry.find_by_permalink(registry)
           @registry_id = record.id

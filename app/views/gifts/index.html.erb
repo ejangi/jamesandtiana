@@ -1,6 +1,6 @@
 <%= render :partial => "registries/submenu" %>
 
-<h1><%= @registry.title %> Gift Registry</h1>
+<h1><% if !@registry.nil? then %><%= @registry.title %> <% end %>Gift Registry</h1>
 
 <div id="gift-registry">
 

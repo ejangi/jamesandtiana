@@ -1,5 +1,6 @@
 class GiftsController < ApplicationController
   before_filter :get_registry
+  filter_access_to :all
   
   # GET /gifts
   # GET /gifts.xml
@@ -46,7 +47,7 @@ class GiftsController < ApplicationController
 
     respond_to do |format|
       if @gift.save
-        format.html { redirect_to(@gift, :notice => 'Gift was successfully created.') }
+        format.html { redirect_to(url_for({ :controller => :gifts, :action => :index }), :notice => 'Gift was successfully created.') }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
       else
         format.html { render :action => "new" }
@@ -62,7 +63,7 @@ class GiftsController < ApplicationController
 
     respond_to do |format|
       if @gift.update_attributes(params[:gift])
-        format.html { redirect_to(@gift, :notice => 'Gift was successfully updated.') }
+        format.html { redirect_to(url_for({ :controller => :gifts, :action => :index }), :notice => 'Gift was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -86,7 +87,7 @@ class GiftsController < ApplicationController
   private
   
     def get_registry
-      @registry_id = params[:registry]
+      @registry_id = params[:registry_permalink]
       begin
         @registry = Registry.find_by_permalink(@registry_id.to_s)
       rescue Exception => e

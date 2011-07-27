@@ -59,12 +59,13 @@ Jamesandtiana::Application.routes.draw do
   
   resources :users
   resources :registries
+  resources :gifts
   
-  match ':registry', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry => /engagement|wedding/ }
-  match ':registry/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry => /engagement|wedding/ }
-  match ':registry/gifts(.:format)', :as => "gifts", :controller => "gifts", :action => "index", :constraints => { :registry => /engagement|wedding/ }
-  match ':registry/gifts/:id(.:format)', :as => "gifts", :controller => "gifts", :action => "show", :constraints => { :registry => /engagement|wedding/ }
-  match ':registry/gifts(/:id(/:action(.:format)))', :as => "gifts", :controller => "gifts", :constraints => { :registry => /engagement|wedding/ }
+  match ':registry_permalink', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry_permalink => /engagement|wedding/ }
+  match ':registry_permalink/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
+  match ':registry_permalink/gifts(.:format)', :as => "gifts", :controller => "gifts", :action => "index", :constraints => { :registry_permalink => /engagement|wedding/ }
+  match ':registry_permalink/gifts/:id(.:format)', :as => "gifts", :controller => "gifts", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
+  match ':registry_permalink/gifts(/:id(/:action(.:format)))', :as => "gifts", :controller => "gifts", :constraints => { :registry_permalink => /engagement|wedding/ }
   
   resource :user_session
   resource :account, :controller => "users"

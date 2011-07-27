@@ -12,7 +12,7 @@ module ApplicationHelper
   
   def mainmenu
     string = ''
-    registries = Registry.all
+    registries = Registry.list
     
     registries.each do |registry|
       image = registry.title.to_s.downcase.gsub(/[^a-z0-9]/, '.')

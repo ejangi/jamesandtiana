@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  filter_access_to :all
+  
+  before_filter :require_user, :only => [:show, :edit, :update, :new, :create, :destroy]
   
   # GET /users
   # GET /users.xml
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        format.html { redirect_to(users_url, :notice => 'Guest was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -67,7 +68,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(users_url, :notice => 'Guest was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
