@@ -38,6 +38,10 @@ module ApplicationHelper
     return "/#{registry}/gifts"
   end
   
+  def registry_rsvp_path(registry)
+    return "/#{registry}/rsvp"
+  end
+  
   def is_registry?(registry=nil)
     if !@registry.nil? && (@registry.permalink == registry.to_s.downcase)
       true

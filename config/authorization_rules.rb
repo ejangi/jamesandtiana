@@ -2,6 +2,7 @@ authorization do
   role :admin do
     includes :guest
     has_permission_on :registries, :to => :manage
+    has_permission_on :registries, :to => :rsvp
     has_permission_on :gifts, :to => :manage
     has_permission_on :users, :to => :manage
   end
@@ -9,7 +10,7 @@ authorization do
   role :engagement do
     has_permission_on :gifts, :to => :view
     has_permission_on :user_sessions, :to => [:destroy]
-    has_permission_on :registries, :to => [:show, :introduction]
+    has_permission_on :registries, :to => [:show, :introduction, :rsvp]
   end
   
   role :guest do

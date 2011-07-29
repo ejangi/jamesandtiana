@@ -58,11 +58,16 @@ Jamesandtiana::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   
   resources :users
-  resources :registries
+  resources :registries do
+    member do
+      post 'rsvp'
+    end
+  end
   resources :gifts
   
   match ':registry_permalink', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry_permalink => /engagement|wedding/ }
   match ':registry_permalink/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
+  match ':registry_permalink/rsvp(.:format)', :as => "rsvp", :controller => "registries", :action => "rsvp", :constraints => { :registry_permalink => /engagement|wedding/ }
   match ':registry_permalink/gifts(.:format)', :as => "gifts", :controller => "gifts", :action => "index", :constraints => { :registry_permalink => /engagement|wedding/ }
   match ':registry_permalink/gifts/:id(.:format)', :as => "gifts", :controller => "gifts", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
   match ':registry_permalink/gifts(/:id(/:action(.:format)))', :as => "gifts", :controller => "gifts", :constraints => { :registry_permalink => /engagement|wedding/ }

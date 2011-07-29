@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :assignments
   has_many :admissions
   has_many :registries, :through => :admissions
+  has_many :rsvps
   
   validates_presence_of :name
   validates_presence_of :email

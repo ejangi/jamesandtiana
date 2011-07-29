@@ -327,7 +327,7 @@ h2 {
 .gift {
 	padding: 10px;
 	margin: 0 0 10px 0;
-	background: #FFF;
+	background: #FCFBF9;
 	-webkit-box-shadow: 0px 0px 5px 0px #f2ecdf;
 	-moz-box-shadow: 0px 0px 5px 0px #f2ecdf;
 	box-shadow: 0px 0px 5px 0px #f2ecdf;
@@ -544,6 +544,20 @@ form dl {
 	a.button {
 		display: inline-block;
 	}
+	
+	form .radio {
+		display: inline-block;
+		margin: 0 10px 0 0;
+		padding: 10px 20px 8px 20px;
+		background: #FCFBF9;
+		border: 1px dotted #E0D7C5;
+	}
+	
+		form .radio label {
+			display: inline-block;
+			padding: 0 5px;
+			color: #a3894a;
+		}
 	
 	
 	

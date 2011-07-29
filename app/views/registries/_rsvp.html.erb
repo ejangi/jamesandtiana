@@ -1,0 +1,24 @@
+<%= form_for(@rsvp, :as => :rsvp, :url => registry_rsvp_path(@registry.permalink)) do |f| %>
+	<dl>
+		<dd>
+			<fieldset>
+				<div class="radio"><%= f.radio_button :attending, true %> <%= f.label :attending_true, "Yes" %></div>
+				<div class="radio"><%= f.radio_button :attending, false %> <%= f.label :attending_false, "Regretfully, no" %></div>
+			</fieldset>
+		</dd>
+		
+		<% if @registry.show_number_of_guests %>
+		<dt><%= f.label :number_of_guests, "Number of guests attending" %></dt>
+		<dd><%= select :rsvp, :number_of_guests, (1..9).each { |n| "<option value=\"#{n}\">#{n}</option>".html_safe } %></dd>
+		<% end %>
+		
+		<% if @registry.show_dietary_requirements %>
+		<dt><%= f.label :dietary_requirements, "Do you have any special dietary requirements?" %></dt>
+		<dd><%= f.text_area :dietary_requirements %></dd>
+		<% end %>
+	</dl>
+	
+	<div class="submit">
+		<%= f.submit "Submit RSVP", :class => 'rsvp' %>
+	</div>
+<% end %>

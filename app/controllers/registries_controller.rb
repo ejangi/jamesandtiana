@@ -19,6 +19,7 @@ class RegistriesController < ApplicationController
   # GET /registries/1.xml
   def show
     @registry = Registry.find(@registry_id)
+    @rsvp = Rsvp.find_or_create_by_registry_id_and_user_id(@registry.id, current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -96,6 +97,29 @@ class RegistriesController < ApplicationController
     respond_to do |format|
       format.html # introduction.html.erb
       format.xml  { render :xml => @registry }
+    end
+  end
+  
+  # GET /registries/1/rsvp
+  # GET /registries/1/rsvp.xml
+  def rsvp
+    @registry = Registry.find(@registry_id)
+    rsvp_params = params[:rsvp]
+    rsvp = Rsvp.find_or_create_by_registry_id_and_user_id(@registry.id, current_user.id)
+    
+    session[:return_to] = url_for(:registry_permalink => @registry.permalink)
+
+    respond_to do |format|
+      if rsvp.update_attributes(rsvp_params)
+        notice = "We are so sorry to hear that you won't be able to make it."
+        notice = "We are so excited to hear that you will be joining us!" if rsvp.attending == true
+        
+        format.html { redirect_to("/#{@registry.permalink}/information", :notice => notice) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @registry.errors, :status => :unprocessable_entity }
+      end
     end
   end
   

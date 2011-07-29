@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727112402) do
+ActiveRecord::Schema.define(:version => 20110729104051) do
 
   create_table "admissions", :force => true do |t|
     t.integer  "registry_id"
@@ -53,10 +53,22 @@ ActiveRecord::Schema.define(:version => 20110727112402) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "show_number_of_guests",     :default => false
+    t.boolean  "show_dietary_requirements", :default => false
   end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rsvps", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "registry_id"
+    t.boolean  "attending",            :default => false
+    t.integer  "number_of_guests"
+    t.text     "dietary_requirements"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

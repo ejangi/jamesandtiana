@@ -5,8 +5,8 @@ namespace :app do
     # INSERT BELOW
 
     [
-      { :title => "The Engagement", :introduction => "", :when => "2011-09-24 14:00:00", :permalink => "engagement" },
-      { :title => "The Wedding", :introduction => "", :when => "2012-01-06 15:00:00", :permalink => "wedding" }
+      { :title => "The Engagement", :introduction => "", :when => "2011-09-24 14:00:00", :permalink => "engagement", :show_number_of_guests => true },
+      { :title => "The Wedding", :introduction => "", :when => "2012-01-06 15:00:00", :permalink => "wedding", :show_number_of_guests => true, :show_dietary_requirements => true }
     ].each do |attributes|
       Registry.find_or_create_by_permalink(attributes)
     end
