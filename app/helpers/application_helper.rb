@@ -34,6 +34,10 @@ module ApplicationHelper
     end
   end
   
+  def registry_gifts_path(registry)
+    return "/#{registry}/gifts"
+  end
+  
   def is_registry?(registry=nil)
     if !@registry.nil? && (@registry.permalink == registry.to_s.downcase)
       true
@@ -54,6 +58,17 @@ module ApplicationHelper
       abs_path = "#{request.protocol}#{request.host_with_port}#{abs_path}"
     end
    return abs_path
+  end
+  
+  def notices?
+    flash[:notice] || flash[:error]
+  end
+  
+  def notices
+    notices = ""
+    notices << "#{flash[:error]}\n" if flash[:error]
+    notices << "#{flash[:notice]}\n" if flash[:notice]
+    return simple_format(notices)
   end
   
 end

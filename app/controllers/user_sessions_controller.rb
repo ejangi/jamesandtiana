@@ -8,8 +8,8 @@ class UserSessionsController < ApplicationController
   
   def create
     @user_session = UserSession.new(params[:user_session])
+    @user_session.remember_me = true
     if @user_session.save
-      flash[:notice] = "Login successful!"
       redirect_to logged_in_url
     else
       render :action => :new
@@ -39,7 +39,6 @@ class UserSessionsController < ApplicationController
     
     @user_session = UserSession.new(user, true)
     if @user_session.save
-      flash[:notice] = "Login successful!"
       redirect_to logged_in_url
     else
       render :action => :new

@@ -14,7 +14,7 @@ html{color:#555;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     http://developer.yahoo.com/yui/license.html
     version: 2.8.2r1
 **/
-body{margin:0;}h1{font-size:160%;}h2{font-size:130%;}h3{font-size:108%;}h1,h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6,strong,dt{font-weight:bold;}optgroup{font-weight:normal;}abbr,acronym{border-bottom:1px dotted #000;cursor:help;}em{font-style:italic;}del{text-decoration:line-through;}blockquote,ul,ol,dl{margin:1em;}ol,ul,dl{margin-left:2em;}ol li{list-style:decimal outside;}ul li{list-style:disc outside;}dl dd{margin-left:1em;}th,td{border:1px solid #000;padding:.5em;}th{font-weight:bold;text-align:center;}caption{margin-bottom:.5em;text-align:center;}sup{vertical-align:super;}sub{vertical-align:sub;}p,fieldset,table,pre{margin-bottom:1em;}button,input[type="checkbox"],input[type="radio"],input[type="reset"],input[type="submit"]{padding:1px;}
+body{margin:0;}h1{font-size:160%;}h2{font-size:140%;}h3{font-size:108%;}h1,h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6,strong,dt{font-weight:bold;}optgroup{font-weight:normal;}abbr,acronym{border-bottom:1px dotted #000;cursor:help;}em{font-style:italic;}del{text-decoration:line-through;}blockquote,ul,ol,dl{margin:1em;}ol,ul,dl{margin-left:2em;}ol li{list-style:decimal outside;}ul li{list-style:disc outside;}dl dd{margin-left:1em;}th,td{border:1px solid #000;padding:.5em;}th{font-weight:bold;text-align:center;}caption{margin-bottom:.5em;text-align:center;}sup{vertical-align:super;}sub{vertical-align:sub;}p,fieldset,table,pre{margin-bottom:1em;}button,input[type="checkbox"],input[type="radio"],input[type="reset"],input[type="submit"]{padding:1px;}
 
 /*
     YUI FONTS
@@ -40,6 +40,8 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 **/
 html,
 body {
+	position: relative;
+	width: 100%;
 	height: 100%;
 }
 
@@ -275,7 +277,8 @@ h1 {
 	color: #a3894a;
 }
 
-	h1 span.new {
+	h1 span.new,
+	h2 span.edit {
 		padding: 0 0 0 15px;
 		font-size: 13px;
 		font-weight: normal;
@@ -315,6 +318,85 @@ h2 {
 			padding: 5px 0 0 0;
 			font-size: 18px;
 		}
+		
+		
+		
+/**
+	Gift Registry
+**/
+.gift {
+	padding: 10px;
+	margin: 0 0 10px 0;
+	background: #FFF;
+	-webkit-box-shadow: 0px 0px 5px 0px #f2ecdf;
+	-moz-box-shadow: 0px 0px 5px 0px #f2ecdf;
+	box-shadow: 0px 0px 5px 0px #f2ecdf;
+}
+
+.gift:after {
+    display: block;
+    clear: both;
+    content: ".";
+    height: 0;
+    visibility: hidden;
+}
+
+	.gift h2 {
+		margin: 0;
+		font-size: 16px;
+	}
+
+	.gift .description {
+		clear: both;
+	}
+	
+		.gift .description p,
+		.gift .description ul,
+		.gift .description ol {
+			margin: 5px 0;
+		}
+
+	.gift .store,
+	.gift .colour,
+	.gift .quantity,
+	.gift .price,
+	.gift .contribute {
+		float: left;
+		margin : 0 1% 0 0;
+	}
+	
+	.gift .store {
+		width: 20%;
+	}
+	
+	.gift .colour {
+		width: 15%;
+	}
+	
+	.gift .quantity,
+	.gift .price {
+		width: 18%;
+		text-align: right;
+	}
+	
+	.gift .contribute {
+		width: 24%;
+		text-align: right;
+	}
+	
+		.gift .contribute a {
+			margin-top: -5px !important;
+			font-size: 12px !important;
+			text-align: center;
+		}
+	
+	.gift strong {
+		color: #C2B59B;
+	}
+
+	.gift small {
+		font-size: 100%;
+	}
 		
 		
 		
@@ -389,7 +471,7 @@ form dl {
 	form textarea {
 		color: #555;
 		width: 98%;
-		padding: 3px 1%;
+		padding: 5px 1%;
 		border: 2px solid #E0D7C5;
 		font-family: 'Lora', serif;
 		font-size: 16px;
@@ -418,10 +500,12 @@ form dl {
 	}
 	
 	form input[type="submit"],
-	form input[type="button"] {
+	form input[type="button"],
+	a.button:link,
+	a.button:visited {
 		margin: -1px 0 0 0;
-		padding: 4px 8px;
-		color: #FFF;
+		padding: 6px 12px;
+		color: #FFF !important;
 		background: #aa9857; /* Old browsers */
 		background: -moz-linear-gradient(top, #aa9857 0%, #a3894a 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aa9857), color-stop(100%,#a3894a)); /* Chrome,Safari4+ */
@@ -439,10 +523,13 @@ form dl {
 		-moz-border-radius: 5px;
 		border-radius: 5px;
 		cursor: pointer;
+		text-decoration: none;
 	}
 	
 	form input[type="submit"]:hover,
-	form input[type="button"]:hover {
+	form input[type="button"]:hover,
+	a.button:hover,
+	a.button:active {
 		background: #a3894a; /* Old browsers */
 		background: -moz-linear-gradient(top, #a3894a 0%, #aa9857 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3894a), color-stop(100%,#aa9857)); /* Chrome,Safari4+ */
@@ -451,6 +538,11 @@ form dl {
 		background: -ms-linear-gradient(top, #a3894a 0%,#aa9857 100%); /* IE10+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3894a', endColorstr='#aa9857',GradientType=0 ); /* IE6-9 */
 		background: linear-gradient(top, #a3894a 0%,#aa9857 100%); /* W3C */
+		text-decoration: underline;
+	}
+	
+	a.button {
+		display: inline-block;
 	}
 	
 	
@@ -517,6 +609,11 @@ table {
 	Mobile Version Mods
 **/
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+	body {
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-size-adjust: none;
+	}
+	
 	#logo,
 	#logo a,
 	#logo img {
@@ -553,5 +650,17 @@ table {
 	#registry-details {
 		float: none;
 		width: auto !important;
+	}
+	
+	form input[type="text"],
+	form input[type="password"],
+	form textarea,
+	form input[type="submit"],
+	form input[type="button"] {
+		font-size: 22px;
+	}
+	
+	form .submit {
+		margin: 40px 0;
 	}
 }

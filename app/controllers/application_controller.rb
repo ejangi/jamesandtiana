@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   before_filter { |c| Authorization.current_user = current_user }
   
   helper_method :current_user_session, :current_user, :logged_in_url
+  
+  protected
+    def permission_denied
+      flash[:error] = "Sorry, you are not allowed to access that page"
+      redirect_back_or_default root_url
+    end
 
   private
     def current_user_session
@@ -43,7 +49,17 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
     
-    def logged_in_url
+    def logged_in_url 
+      if !current_user && @user_session
+        current_user = @user_session.user
+      end
+       
+      current_user.registries.each do |registry|
+        if registry.when > Time.zone.now
+          return "/#{registry.permalink}/information"
+        end
+      end
+      
       return root_url
     end
 end

@@ -6,12 +6,13 @@
 
 <% @gifts.each do |gift| %>
 	<div id="gift-<%= gift.id %>" class="gift">
-    	<h2><%= gift.title %></h2>
-	    <div class="description"><%= gift.description %></div>
-	    <div class="store"><%= gift.store %></div>
-	    <div class="colour"><%= gift.colour %></div>
-	    <div class="quantity"><%= gift.quantity %></div>
-	    <div class="price"><%= gift.price %></div>
+    	<h2><%= gift.title %> <span class="edit"><%= link_to "Edit", edit_gift_path(gift) %></span></h2>
+	    <div class="store"><strong>Store:</strong> <small><%= (!gift.store.nil?) ? gift.store : "N/A" %></small></div>
+	    <div class="colour"><strong>Colour:</strong> <small><%= (!gift.colour.nil?) ? gift.colour : "N/A" %></small></div>
+	    <div class="quantity"><strong>Quantity:</strong> <small><%= (!gift.quantity.nil?) ? gift.quantity : "N/A" %></small></div>
+	    <div class="price"><strong>Price:</strong> <small><%= (!gift.price.nil?) ? gift.price : "N/A" %></small></div>
+		<div class="contribute"><%= link_to "Contribute to this gift", "#", :class => :button %></div>
+		<div class="description"><%= (!gift.description.nil?) ? simple_format(gift.description) : "N/A" %></div>
 	</div>
 <% end %>
 

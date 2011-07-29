@@ -17,11 +17,9 @@
 		
 		<dt><%= f.label :password %></dt>
 		<dd><%= f.password_field :password %></dd>
-
-		<dd><%= f.check_box :remember_me %> <%= f.label :remember_me %></dd>
 	</dl>
 	
-	<div class="actions">
+	<div class="submit">
 		<%= f.submit "Login", :class => 'login' %>
 	</div>
 <% end %>

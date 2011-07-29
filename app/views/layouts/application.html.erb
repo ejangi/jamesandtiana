@@ -36,10 +36,10 @@
 		</div>
 		
 		<div id="content">
-			<% if flash[:notice] %>
+			<% if notices? %>
 			<div id="notice">
 				<div id="notice-container">
-					<p><%= flash[:notice] %></p>
+					<p><%= notices %></p>
 				</div>
 			</div>
 			<% end %>

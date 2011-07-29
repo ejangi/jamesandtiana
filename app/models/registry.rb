@@ -8,6 +8,14 @@ class Registry < ActiveRecord::Base
     order("created_at ASC")
   }
   
+  scope :in_order, lambda {
+    order("when ASC")
+  }
+  
+  scope :in_reverse_order, lambda {
+    order("when DESC")
+  }
+  
   def self.permalink_list
     registries = self.all
     list = registries.collect { |r| r.permalink }
