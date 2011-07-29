@@ -1,0 +1,10 @@
+<div id="adminmenu">
+	<div id="adminmenu-container">
+		<ul>
+			<% if permitted_to? :index, :users %><li<%= ' class="active"'.html_safe if current_page?(users_path) %>><%= link_to "Users", users_path %></li><% end %>
+			<% if permitted_to? :index, :gifts %><li<%= ' class="active"'.html_safe if current_page?(url_for(:controller => :gifts, :action => :index)) %>><%= link_to "Gifts", url_for(:controller => :gifts, :action => :index) %></li><% end %>
+			<% if permitted_to? :index, :contributions %><li<%= ' class="active"'.html_safe if current_page?(contributions_path) %>><%= link_to "Contributions", contributions_path %></li><% end %>
+			<% if permitted_to? :index, :rsvps %><li<%= ' class="active"'.html_safe if current_page?(rsvps_path) %>><%= link_to "RSVPs", rsvps_path %></li><% end %>
+		</ul>
+	</div>
+</div>

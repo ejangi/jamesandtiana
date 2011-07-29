@@ -64,6 +64,8 @@ Jamesandtiana::Application.routes.draw do
     end
   end
   resources :gifts
+  resources :contributions
+  resources :rsvps
   
   match ':registry_permalink', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry_permalink => /engagement|wedding/ }
   match ':registry_permalink/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
@@ -79,6 +81,8 @@ Jamesandtiana::Application.routes.draw do
   
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
+  
+  match "/admin" => redirect("/users")
   
   root :to => "home#index"
 end

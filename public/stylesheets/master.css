@@ -14,7 +14,7 @@ html{color:#555;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     http://developer.yahoo.com/yui/license.html
     version: 2.8.2r1
 **/
-body{margin:0;}h1{font-size:160%;}h2{font-size:140%;}h3{font-size:108%;}h1,h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6,strong,dt{font-weight:bold;}optgroup{font-weight:normal;}abbr,acronym{border-bottom:1px dotted #000;cursor:help;}em{font-style:italic;}del{text-decoration:line-through;}blockquote,ul,ol,dl{margin:1em;}ol,ul,dl{margin-left:2em;}ol li{list-style:decimal outside;}ul li{list-style:disc outside;}dl dd{margin-left:1em;}th,td{border:1px solid #000;padding:.5em;}th{font-weight:bold;text-align:center;}caption{margin-bottom:.5em;text-align:center;}sup{vertical-align:super;}sub{vertical-align:sub;}p,fieldset,table,pre{margin-bottom:1em;}button,input[type="checkbox"],input[type="radio"],input[type="reset"],input[type="submit"]{padding:1px;}
+body{margin:0;}h1{font-size:160%;}h2{font-size:130%;}h3{font-size:108%;}h1,h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6,strong,dt{font-weight:bold;}optgroup{font-weight:normal;}abbr,acronym{border-bottom:1px dotted #000;cursor:help;}em{font-style:italic;}del{text-decoration:line-through;}blockquote,ul,ol,dl{margin:1em;}ol,ul,dl{margin-left:2em;}ol li{list-style:decimal outside;}ul li{list-style:disc outside;}dl dd{margin-left:1em;}th,td{border:1px solid #000;padding:.5em;}th{font-weight:bold;text-align:center;}caption{margin-bottom:.5em;text-align:center;}sup{vertical-align:super;}sub{vertical-align:sub;}p,fieldset,table,pre{margin-bottom:1em;}button,input[type="checkbox"],input[type="radio"],input[type="reset"],input[type="submit"]{padding:1px;}
 
 /*
     YUI FONTS
@@ -176,7 +176,8 @@ h2 small {
 	
 	
 
-#submenu {
+#submenu,
+#adminmenu {
 	display: block;
 	margin: 10px 0 20px 0;
 	background: #fcfbf9;
@@ -186,7 +187,8 @@ h2 small {
 	font-size: 17px;
 }	
 
-	#submenu-container {
+	#submenu-container,
+	#adminmenu-container {
 		position: relative;
 		left: -50%;
 		display: block;
@@ -194,7 +196,8 @@ h2 small {
 		text-align: left;
 	}
 
-	#submenu:after {
+	#submenu:after,
+	#adminmenu:after {
 	    display: block;
 	    clear: both;
 	    content: ".";
@@ -202,14 +205,16 @@ h2 small {
 	    visibility: hidden;
 	}
 
-		#submenu ul {
+		#submenu ul,
+		#adminmenu ul {
 			position: relative;
 			left: 50%;
 			margin: 0;
 			padding: 0;
 		}
 	
-		#submenu ul:after {
+		#submenu ul:after,
+		#adminmenu ul:after {
 		    display: block;
 		    clear: both;
 		    content: ".";
@@ -217,7 +222,8 @@ h2 small {
 		    visibility: hidden;
 		}
 	
-			#submenu ul li {
+			#submenu ul li,
+			#adminmenu ul li {
 				position: relative;
 				display: block;
 				float: left;
@@ -225,7 +231,8 @@ h2 small {
 				padding: 0;
 			}
 		
-				#submenu ul li a {
+				#submenu ul li a,
+				#adminmenu ul li a {
 					position: relative;
 					display: block;
 					padding: 5px 10px;
@@ -235,11 +242,13 @@ h2 small {
 					z-index: 10;
 				}
 				
-				#submenu ul li a:hover {
+				#submenu ul li a:hover,
+				#adminmenu ul li a:hover {
 					text-decoration: underline;
 				}
 				
-				#submenu ul li.active a {
+				#submenu ul li.active a,
+				#adminmenu ul li.active a {
 					margin: 0 0 -1px 0;
 					padding: 5px 10px 6px 10px;
 					color: #a3894a;

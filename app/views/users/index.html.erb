@@ -1,4 +1,6 @@
-<h1>Guests <span class="new"><%= link_to 'New Guest', new_user_path %></span></h1>
+<%= render :partial => "shared/adminmenu" %>
+
+<h1>Guests<% if permitted_to? :new, :users %> <span class="new"><%= link_to 'New Guest', new_user_path %></span><% end %></h1>
 
 <table>
   <tr>

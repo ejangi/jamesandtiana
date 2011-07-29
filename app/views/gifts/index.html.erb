@@ -1,4 +1,5 @@
-<%= render :partial => "registries/submenu" %>
+<%= render :partial => "shared/adminmenu" if permitted_to? :index, :users %>
+<%= render :partial => "shared/submenu" %>
 
 <h1><% if !@registry.nil? then %><%= @registry.title %> <% end %>Gift Registry</h1>
 

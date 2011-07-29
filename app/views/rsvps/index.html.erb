@@ -1,0 +1,51 @@
+<%= render :partial => "shared/adminmenu" if permitted_to? :index, :contributions %>
+
+<h1>Listing RSVPs</h1>
+
+<h2><%= @rsvps.first.registry.title %></h2>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Registry</th>
+    <th>Attending</th>
+    <th>Number of guests</th>
+    <th>Dietary requirements</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% reg = @rsvps.first.registry.permalink %>
+<% @rsvps.each do |rsvp| %>
+	<% if reg != rsvp.registry.permalink %>
+  </tr>
+</table>
+<h2><%= rsvp.registry.title %></h2>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Registry</th>
+    <th>Attending</th>
+    <th>Number of guests</th>
+    <th>Dietary requirements</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+	<% end %>
+  <tr>
+    <td><%= rsvp.user.name %></td>
+    <td><%= rsvp.registry.title %></td>
+    <td><%= rsvp.attending %></td>
+    <td><%= rsvp.number_of_guests %></td>
+    <td><%= rsvp.dietary_requirements %></td>
+    <td><%= link_to 'Show', url_for(:controller => :rsvps, :action => :show, :id => rsvp.id) %></td>
+    <td><%= link_to 'Edit', edit_rsvp_path(rsvp) %></td>
+    <td><%= link_to 'Destroy', url_for(:controller => :rsvps, :action => :destroy, :id => rsvp.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rsvp', new_rsvp_path %>

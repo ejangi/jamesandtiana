@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%= @contribution.user.name %>
+</p>
+
+<p>
+  <b>Registry:</b>
+  <%= @contribution.registry.title %>
+</p>
+
+<p>
+  <b>Gift:</b>
+  <%= @contribution.gift.title %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @contribution.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>

@@ -3,6 +3,8 @@ authorization do
     includes :guest
     has_permission_on :registries, :to => :manage
     has_permission_on :registries, :to => :rsvp
+    has_permission_on :contributions, :to => :manage
+    has_permission_on :rsvps, :to => :manage
     has_permission_on :gifts, :to => :manage
     has_permission_on :users, :to => :manage
   end
