@@ -6,7 +6,7 @@
 
 <% @gifts.each do |gift| %>
 	<div id="gift-<%= gift.id %>" class="gift">
-    	<h2><%= gift.title %> <span class="edit"><%= link_to "Edit", edit_gift_path(gift) %></span></h2>
+    	<h2><%= gift.title %><% if permitted_to? :edit, gift %> <span class="edit"><%= link_to "Edit", edit_gift_path(gift) %></span><% end %></h2>
 	    <div class="store"><strong>Store:</strong> <small><%= (!gift.store.nil?) ? gift.store : "N/A" %></small></div>
 	    <div class="colour"><strong>Colour:</strong> <small><%= (!gift.colour.nil?) ? gift.colour : "N/A" %></small></div>
 	    <div class="quantity"><strong>Quantity:</strong> <small><%= (!gift.quantity.nil?) ? gift.quantity : "N/A" %></small></div>
