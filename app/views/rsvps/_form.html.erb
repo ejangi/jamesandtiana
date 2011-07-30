@@ -1,37 +1,33 @@
 <%= form_for(@rsvp) do |f| %>
-  <% if @rsvp.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rsvp.errors.count, "error") %> prohibited this rsvp from being saved:</h2>
+	<% if @rsvp.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@rsvp.errors.count, "error") %> prohibited this rsvp from being saved:</h2>
 
-      <ul>
-      <% @rsvp.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		  <ul>
+		  <% @rsvp.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	<% end %>
+	
+	<dl>
+		<dt><%= f.label :user %></dt>
+    	<dd><%= select("rsvp", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {:include_blank => '- Select -'}) %></dd>
+		
+		<dt><%= f.label :registry %></dt>
+    	<dd><%= select("rsvp", "registry_id", Registry.all.collect {|p| [ p.title, p.id ] }, {:include_blank => '- Select -'}) %></dd>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :registry %><br />
-    <%= f.text_field :registry %>
-  </div>
-  <div class="field">
-    <%= f.label :attending %><br />
-    <%= f.check_box :attending %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_guests %><br />
-    <%= f.text_field :number_of_guests %>
-  </div>
-  <div class="field">
-    <%= f.label :dietary_requirements %><br />
-    <%= f.text_area :dietary_requirements %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+		<dd><%= f.check_box :attending %> <%= f.label :attending %></dd>
+		
+    	<dt><%= f.label :number_of_guests %></dt>
+    	<dd><%= f.text_field :number_of_guests %></dd>
+
+    	<dt><%= f.label :dietary_requirements %></dt>
+    	<dd><%= f.text_area :dietary_requirements, :rows => 3 %></dd>
+
+
+	<div class="submit">
+	  <%= f.submit %>
+	</div>
 <% end %>

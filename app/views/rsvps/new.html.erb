@@ -1,5 +1,5 @@
+<%= render :partial => "shared/adminmenu" if permitted_to? :index, :users %>
+
 <h1>New rsvp</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', rsvps_path %>

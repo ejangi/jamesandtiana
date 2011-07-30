@@ -47,7 +47,7 @@ class GiftsController < ApplicationController
 
     respond_to do |format|
       if @gift.save
-        format.html { redirect_to(url_for({ :controller => :gifts, :action => :index }), :notice => 'Gift was successfully created.') }
+        format.html { redirect_to(gifts_path, :notice => 'Gift was successfully created.') }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class GiftsController < ApplicationController
 
     respond_to do |format|
       if @gift.update_attributes(params[:gift])
-        format.html { redirect_to(url_for({ :controller => :gifts, :action => :index }), :notice => 'Gift was successfully updated.') }
+        format.html { redirect_to(gifts_path, :notice => 'Gift was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,10 +84,52 @@ class GiftsController < ApplicationController
     end
   end
   
+  # GET /gifts/1/contribute
+  def contribute
+    @gift = Gift.find(params[:gift_id])
+    
+    if !@registry
+      flash[:error] = "You must click on a celegration and then click on gifts to make a contribution"
+      redirect_to(root_url)
+      return
+    end
+    
+    @contribution = Contribution.find_or_create_by_registry_id_and_gift_id_and_user_id(@registry.id, @gift.id, current_user.id)
+    @contribution.amount = @gift.price if @contribution.amount.nil?
+    
+    respond_to do |format|
+      format.html # contribute.html.erb
+      format.xml  { render :xml => @gift }
+    end
+  end
+  
+  # PUT /gifts/1/contribution
+  def contribution
+    @gift = Gift.find(params[:gift_id])
+    
+    if !@registry
+      flash[:error] = "You must click on a celegration and then click on gifts to make a contribution"
+      redirect_to(root_url)
+      return 
+    end
+    
+    @contribution = Contribution.find_or_create_by_registry_id_and_gift_id_and_user_id(@registry.id, @gift.id, current_user.id)
+    
+    respond_to do |format|
+      if @contribution.update_attributes(params[:contribution])
+        format.html { redirect_to(celebration_gifts_path(@registry), :notice => 'Thank you for your contribution.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "contribute" }
+        format.xml  { render :xml => @contribution.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
   private
   
     def get_registry
-      @registry_id = params[:registry_permalink]
+      @registry_id = params[:celebration_id]
       begin
         @registry = Registry.find_by_permalink(@registry_id.to_s)
       rescue Exception => e

@@ -288,6 +288,7 @@ h1 {
 
 	h1 span.new,
 	h2 span.edit {
+		display: inline-block;
 		padding: 0 0 0 15px;
 		font-size: 13px;
 		font-weight: normal;
@@ -351,12 +352,14 @@ h2 {
 }
 
 	.gift h2 {
-		margin: 0;
+		margin: 0 0 5px 0;
 		font-size: 16px;
 	}
 
 	.gift .description {
-		clear: both;
+		float: left;
+		margin: 5px 0;
+		min-width: 50%;
 	}
 	
 		.gift .description p,
@@ -371,33 +374,32 @@ h2 {
 	.gift .price,
 	.gift .contribute {
 		float: left;
+		width: 12%;
 		margin : 0 1% 0 0;
 	}
 	
-	.gift .store {
-		width: 20%;
-	}
-	
+	.gift .store,
 	.gift .colour {
-		width: 15%;
-	}
-	
-	.gift .quantity,
-	.gift .price {
-		width: 18%;
 		text-align: right;
 	}
 	
 	.gift .contribute {
-		width: 24%;
-		text-align: right;
+		float: right;
+		margin: 5px 0 5px 15px;
+		text-align: center;
 	}
 	
 		.gift .contribute a {
-			margin-top: -5px !important;
 			font-size: 12px !important;
 			text-align: center;
 		}
+		
+	.gift .photo {
+		float: left;
+		width: 100px;
+		height: 100px;
+		margin: 0 15px 0 0;
+	}
 	
 	.gift strong {
 		color: #C2B59B;
@@ -406,6 +408,22 @@ h2 {
 	.gift small {
 		font-size: 100%;
 	}
+	
+	
+	.gift.contributed {
+		color: #C2B59B;
+	}
+	
+		.gift.contributed h2 {
+			color: #C2B59B;
+			text-decoration: line-through;
+		}
+		
+		.gift.contributed .photo {
+			-moz-opacity:.50; 
+			filter:alpha(opacity=50); 
+			opacity:.50;
+		}
 		
 		
 		
@@ -499,6 +517,21 @@ form dl {
 	form input[type="password"].short {
 		width: 40%;
 	}
+	
+	form select {
+		color: #555;
+		width: 98%;
+		padding: 5px 1%;
+		border: 2px solid #E0D7C5;
+		font-size: 16px;
+		-webkit-box-shadow: inset 2px 2px 3px #eeeeee;
+		-moz-box-shadow: inset 2px 2px 3px #eeeeee;
+		box-shadow: inset 2px 2px 3px #eeeeee;
+	}
+	
+		form .datetime select {
+			width: auto;
+		}
 	
 	form textarea {
 		min-height: 150px;

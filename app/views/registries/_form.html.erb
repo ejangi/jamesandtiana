@@ -1,29 +1,32 @@
-<%= form_for(@registry) do |f| %>
-  <% if @registry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@registry.errors.count, "error") %> prohibited this registry from being saved:</h2>
+<%= form_for(@registry, :url => (@registry.id.nil? ? new_celebration_path : edit_celebration_path(@registry))) do |f| %>
+	<% if @registry.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@registry.errors.count, "error") %> prohibited this registry from being saved:</h2>
 
-      <ul>
-      <% @registry.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	    <ul>
+	    <% @registry.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :introduction %><br />
-    <%= f.text_area :introduction %>
-  </div>
-  <div class="field">
-    <%= f.label :when %><br />
-    <%= f.datetime_select :when %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<dl>
+		<dt><%= f.label :title %></dt>
+		<dd><%= f.text_field :title %></dd>
+		
+		<dt><%= f.label :introduction %></dt>
+		<dd><%= f.text_area :introduction %></dd>
+
+		<dt><%= f.label :when %></dt>
+		<dd class="datetime"><%= f.datetime_select :when %></dd>
+		
+		<dd><%= f.check_box :show_number_of_guests %> <%= f.label :show_number_of_guests %></dd>
+		
+		<dd><%= f.check_box :show_dietary_requirements %> <%= f.label :show_dietary_requirements %></dd>
+	</dl>
+	
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
 <% end %>

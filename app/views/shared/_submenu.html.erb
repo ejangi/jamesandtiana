@@ -2,8 +2,8 @@
 <div id="submenu">
 	<div id="submenu-container">
 		<ul>
-			<li<%= ' class="active"'.html_safe if current_page?(registry_home_path(@registry.permalink)) %>><%= link_to "The Day", registry_home_path(@registry.permalink) %></li>
-			<li<%= ' class="active"'.html_safe if current_page?(registry_gifts_path(@registry.permalink)) %>><%= link_to "Gift Registry", registry_gifts_path(@registry.permalink) %></li>
+			<li<%= ' class="active"'.html_safe if current_page?(celebration_home_path(@registry)) %>><%= link_to "The Day", celebration_home_path(@registry) %></li>
+			<li<%= ' class="active"'.html_safe if current_page?(celebration_gifts_path(@registry)) %>><%= link_to "Gift Registry", celebration_gifts_path(@registry) %></li>
 		</ul>
 	</div>
 </div>

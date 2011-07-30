@@ -16,30 +16,23 @@ module ApplicationHelper
     
     registries.each do |registry|
       image = registry.title.to_s.downcase.gsub(/[^a-z0-9]/, '.')
+      date = l registry.when, :format => :short
       string << "<div id=\"menu-#{registry.permalink}\""
       string << "class=\"active\"'".html_safe if is_registry?(registry.permalink)
       string << ">"
-      string << link_to("<span class=\"title\"><img src=\"/images/#{image}.png\" alt=\"#{registry.title}\" /></span><span class=\"date\">September 24</span>".html_safe, registry_home_path(registry.permalink))
+      string << link_to("<span class=\"title\"><img src=\"/images/#{image}.png\" alt=\"#{registry.title}\" /></span><span class=\"date\">#{date}</span>".html_safe, celebration_home_path(registry))
       string << "</div>\n\t\t\t\t\t"
     end
 
     return string.html_safe
   end
   
-  def registry_home_path(registry)
+  def celebration_home_path(registry)
     if !current_user_session
-      return "/#{registry}"
+      return introduction_celebration_path(registry)
     else
-      return "/#{registry}/information"
+      return celebration_path(registry)
     end
-  end
-  
-  def registry_gifts_path(registry)
-    return "/#{registry}/gifts"
-  end
-  
-  def registry_rsvp_path(registry)
-    return "/#{registry}/rsvp"
   end
   
   def is_registry?(registry=nil)

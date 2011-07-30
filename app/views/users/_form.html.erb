@@ -19,10 +19,10 @@
 		<dd><%= f.text_field :email %></dd>
 		
 		<dt><%= f.label :password %></dt>
-		<dd><%= f.text_field :password %></dd>
+		<dd><%= f.password_field :password %></dd>
 		
 		<dt><%= f.label :password_confirmation %></dt>
-		<dd><%= f.text_field :password_confirmation %></dd>
+		<dd><%= f.password_field :password_confirmation %></dd>
 
 		<dt><%= f.label :phone %></dt>
 		<dd><%= f.text_field :phone %></dd>
@@ -49,7 +49,7 @@
 		<% end %></dd>
 	</dl>
 		
-	<div class="actions">
+	<div class="submit">
 	  <%= f.submit %>
 	</div>
 <% end %>

@@ -22,4 +22,8 @@ class Registry < ActiveRecord::Base
     list = registries.collect { |r| r.permalink }
     return list
   end
+  
+  def to_param
+    permalink
+  end
 end

@@ -58,26 +58,31 @@ Jamesandtiana::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   
   resources :users
-  resources :registries do
+  resources :celebrations, :controller => :registries do
     member do
-      post 'rsvp'
+      get 'introduction'
+      put 'rsvp'
+    end
+    resources :gifts do
+      get 'contribute'
+      put 'contribution'
     end
   end
   resources :gifts
   resources :contributions
   resources :rsvps
   
-  match ':registry_permalink', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry_permalink => /engagement|wedding/ }
-  match ':registry_permalink/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
-  match ':registry_permalink/rsvp(.:format)', :as => "rsvp", :controller => "registries", :action => "rsvp", :constraints => { :registry_permalink => /engagement|wedding/ }
-  match ':registry_permalink/gifts(.:format)', :as => "gifts", :controller => "gifts", :action => "index", :constraints => { :registry_permalink => /engagement|wedding/ }
-  match ':registry_permalink/gifts/:id(.:format)', :as => "gifts", :controller => "gifts", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
-  match ':registry_permalink/gifts(/:id(/:action(.:format)))', :as => "gifts", :controller => "gifts", :constraints => { :registry_permalink => /engagement|wedding/ }
+  # match ':registry_permalink', :as => "registries", :controller => "registries", :action => "introduction", :constraints => { :registry_permalink => /engagement|wedding/ }
+  # match ':registry_permalink/information(.:format)', :as => "registries", :controller => "registries", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
+  # match ':registry_permalink/rsvp(.:format)', :as => "rsvp", :controller => "registries", :action => "rsvp", :constraints => { :registry_permalink => /engagement|wedding/ }
+  # match ':registry_permalink/gifts(.:format)', :as => "gifts", :controller => "gifts", :action => "index", :constraints => { :registry_permalink => /engagement|wedding/ }
+  # match ':registry_permalink/gifts/:id(.:format)', :as => "gifts", :controller => "gifts", :action => "show", :constraints => { :registry_permalink => /engagement|wedding/ }
+  # match ':registry_permalink/gifts(/:id(/:action(.:format)))', :as => "gifts", :controller => "gifts", :constraints => { :registry_permalink => /engagement|wedding/ }
   
   resource :user_session
   resource :account, :controller => "users"
   
-  match ':key', :controller => "UserSessions", :action => "quicklogin", :constraints => { :key => /[a-z0-9]{40}/ }
+  # match ':key', :controller => "UserSessions", :action => "quicklogin", :constraints => { :key => /[a-z0-9]{40}/ }
   
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout

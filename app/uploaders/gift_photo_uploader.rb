@@ -32,6 +32,14 @@ class GiftPhotoUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+  version :threehundred do
+    process :resize_to_limit => [300, 300]
+  end
+  
+  version :onefifty do
+    process :resize_to_limit => [150, 150]
+  end
+  
   version :onehundred do
     process :resize_to_limit => [100, 100]
   end

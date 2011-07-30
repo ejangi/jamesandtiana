@@ -19,6 +19,15 @@ class RegistriesController < ApplicationController
   # GET /registries/1.xml
   def show
     @registry = Registry.find(@registry_id)
+    
+    if !current_user.has_admission_to_registry(@registry)
+      respond_to do |format|
+        format.html { render "not_invited" }
+        format.xml  { render :xml => @registry }
+      end 
+      return
+    end
+    
     @rsvp = Rsvp.find_or_create_by_registry_id_and_user_id(@registry.id, current_user.id)
 
     respond_to do |format|
@@ -40,7 +49,7 @@ class RegistriesController < ApplicationController
 
   # GET /registries/1/edit
   def edit
-    @registry = Registry.find(params[:id])
+    @registry = Registry.find(@registry_id)
   end
 
   # POST /registries
@@ -50,7 +59,7 @@ class RegistriesController < ApplicationController
 
     respond_to do |format|
       if @registry.save
-        format.html { redirect_to(@registry, :notice => 'Registry was successfully created.') }
+        format.html { redirect_to(@registry, :notice => 'Celebration was successfully created.') }
         format.xml  { render :xml => @registry, :status => :created, :location => @registry }
       else
         format.html { render :action => "new" }
@@ -62,11 +71,11 @@ class RegistriesController < ApplicationController
   # PUT /registries/1
   # PUT /registries/1.xml
   def update
-    @registry = Registry.find(params[:id])
+    @registry = Registry.find(@registry_id)
 
     respond_to do |format|
       if @registry.update_attributes(params[:registry])
-        format.html { redirect_to(@registry, :notice => 'Registry was successfully updated.') }
+        format.html { redirect_to(celebrations_path, :notice => 'Celebration was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -114,7 +123,7 @@ class RegistriesController < ApplicationController
         notice = "We are so sorry to hear that you won't be able to make it."
         notice = "We are so excited to hear that you will be joining us!" if rsvp.attending == true
         
-        format.html { redirect_to("/#{@registry.permalink}/information", :notice => notice) }
+        format.html { redirect_to(celebration_path(@registry), :notice => notice) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -126,8 +135,8 @@ class RegistriesController < ApplicationController
   private
   
     def get_registry
-      if params[:registry_permalink]
-        registry = params[:registry_permalink].to_s
+      if params[:id]
+        registry = params[:id].to_s
         begin
           record = Registry.find_by_permalink(registry)
           @registry_id = record.id

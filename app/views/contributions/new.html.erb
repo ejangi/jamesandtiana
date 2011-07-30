@@ -1,5 +1,5 @@
+<%= render :partial => "shared/adminmenu" if permitted_to? :index, :contributions %>
+
 <h1>New contribution</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', contributions_path %>

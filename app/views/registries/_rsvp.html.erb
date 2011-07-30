@@ -1,4 +1,4 @@
-<%= form_for(@rsvp, :as => :rsvp, :url => registry_rsvp_path(@registry.permalink)) do |f| %>
+<%= form_for(@rsvp, :as => :rsvp, :url => rsvp_celebration_path(@registry)) do |f| %>
 	<dl>
 		<dd>
 			<fieldset>
@@ -14,7 +14,7 @@
 		
 		<% if @registry.show_dietary_requirements %>
 		<dt><%= f.label :dietary_requirements, "Do you have any special dietary requirements?" %></dt>
-		<dd><%= f.text_area :dietary_requirements %></dd>
+		<dd><%= f.text_area :dietary_requirements, :rows => 3 %></dd>
 		<% end %>
 	</dl>
 	

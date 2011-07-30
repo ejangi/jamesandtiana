@@ -1,11 +1,12 @@
-<h1>Listing registries</h1>
+<%= render :partial => "shared/adminmenu" if permitted_to? :index, :users %>
+
+<h1>Listing Celebrations<% if permitted_to? :new, :registries %> <span class="new"><%= link_to 'New Celebration', new_celebration_path %></span><% end %></h1>
 
 <table>
   <tr>
     <th>Title</th>
-    <th>Introduction</th>
     <th>When</th>
-    <th></th>
+    <th>Introduction</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,15 +14,10 @@
 <% @registries.each do |registry| %>
   <tr>
     <td><%= registry.title %></td>
+	<td><%= l registry.when, :format => :short %></td>
     <td><%= registry.introduction %></td>
-    <td><%= registry.when %></td>
-    <td><%= link_to 'Show', registry %></td>
-    <td><%= link_to 'Edit', edit_registry_path(registry) %></td>
-    <td><%= link_to 'Destroy', registry, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_celebration_path(registry) %></td>
+    <td><%= link_to 'Destroy', celebration_path(registry), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Registry', new_registry_path %>

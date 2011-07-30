@@ -1,0 +1,24 @@
+<h1>Make a contribution towards <small>"<%= @gift.title %>"</small></h1>
+
+<%= form_for(@contribution, :url => celebration_gift_contribution_path(@registry, @gift)) do |f| %>
+	<% if @contribution.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+
+	    <ul>
+	    <% @contribution.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+	<dl>
+		<dt><%= f.label :amount %></dt>
+		<dd><%= f.text_field :amount %></dd>
+	</dt>
+	
+	<div class="actions">
+	    <%= f.submit %>
+	  </div>
+<% end %>

@@ -1,33 +1,32 @@
 <%= form_for(@contribution) do |f| %>
   <% if @contribution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+	<div id="error_explanation">
+	  <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
 
-      <ul>
-      <% @contribution.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	  <ul>
+	  <% @contribution.errors.full_messages.each do |msg| %>
+	    <li><%= msg %></li>
+	  <% end %>
+	  </ul>
+	</div>
+	<% end %>
+	
+	<dl>
+		<dt><%= f.label :user %></dt>
+    	<dd><%= select("contribution", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {:include_blank => '- Select -'}) %></dd>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= select("contribution", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {:include_blank => '- Select -'}) %>
-  </div>
-  <div class="field">
-    <%= f.label :registry %><br />
-    <%= select("contribution", "registry_id", Registry.all.collect {|p| [ p.title, p.id ] }, {:include_blank => '- Select -'}) %>
-  </div>
-  <div class="field">
-    <%= f.label :gift %><br />
-    <%= select("contribution", "gift_id", Gift.all.collect {|p| [ p.title, p.id ] }, {:include_blank => '- Select -'}) %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+		<dt><%= f.label :registry %></dt>
+    	<dd><%= select("contribution", "registry_id", Registry.all.collect {|p| [ p.title, p.id ] }, {:include_blank => '- Select -'}) %></dd>
+
+    	<dt><%= f.label :gift %></dt>
+    	<dd><%= select("contribution", "gift_id", Gift.all.collect {|p| [ p.title, p.id ] }, {:include_blank => '- Select -'}) %></dd>
+
+    	<dt><%= f.label :amount %></dt>
+    	<dd><%= f.text_field :amount %></dd>
+		
+	</dl>
+	
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110729104051) do
+ActiveRecord::Schema.define(:version => 20110730003539) do
 
   create_table "admissions", :force => true do |t|
     t.integer  "registry_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20110729104051) do
     t.decimal  "price",       :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo"
   end
 
   create_table "registries", :force => true do |t|

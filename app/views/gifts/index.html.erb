@@ -1,18 +1,26 @@
 <%= render :partial => "shared/adminmenu" if permitted_to? :index, :users %>
 <%= render :partial => "shared/submenu" %>
 
-<h1><% if !@registry.nil? then %><%= @registry.title %> <% end %>Gift Registry</h1>
+<h1><% if !@registry.nil? then %><%= @registry.title %> <% end %>Gift Registry<% if permitted_to? :new, :gifts %> <span class="new"><%= link_to 'New Gift', new_gift_path %></span><% end %></h1>
 
 <div id="gift-registry">
 
 <% @gifts.each do |gift| %>
-	<div id="gift-<%= gift.id %>" class="gift">
+	<div id="gift-<%= gift.id %>" class="gift<%= " contributed" if gift.contributed? %>">
+		<div class="photo"><%= photo_tag(gift, :onehundred) %></div>
     	<h2><%= gift.title %><% if permitted_to? :edit, gift %> <span class="edit"><%= link_to "Edit", edit_gift_path(gift) %></span><% end %></h2>
+		<div class="price"><strong>Price:</strong> <small><%= (!gift.price.nil?) ? number_to_currency(gift.price) : "N/A" %></small></div>
+		<div class="quantity"><strong>Quantity:</strong> <small><%= (!gift.quantity.nil?) ? gift.quantity : "N/A" %></small></div>
 	    <div class="store"><strong>Store:</strong> <small><%= (!gift.store.nil?) ? gift.store : "N/A" %></small></div>
 	    <div class="colour"><strong>Colour:</strong> <small><%= (!gift.colour.nil?) ? gift.colour : "N/A" %></small></div>
-	    <div class="quantity"><strong>Quantity:</strong> <small><%= (!gift.quantity.nil?) ? gift.quantity : "N/A" %></small></div>
-	    <div class="price"><strong>Price:</strong> <small><%= (!gift.price.nil?) ? gift.price : "N/A" %></small></div>
-		<div class="contribute"><%= link_to "Contribute to this gift", "#", :class => :button %></div>
+	    
+		<div class="contribute">
+			<% if gift.contributed? %>
+				<p class="contributed">This gift has already been contributed<p>
+			<% else %>
+				<p class="make"><%= link_to("Contribute to this gift", celebration_gift_contribute_path(@registry, gift), :class => :button) if !@registry.nil? %></p>
+			<% end %>
+		</div>
 		<div class="description"><%= (!gift.description.nil?) ? simple_format(gift.description) : "N/A" %></div>
 	</div>
 <% end %>

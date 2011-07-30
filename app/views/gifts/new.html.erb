@@ -1,3 +1,5 @@
+<%= render :partial => "shared/adminmenu" if permitted_to? :index, :users %>
+
 <h1>New gift</h1>
 
 <%= render 'form' %>

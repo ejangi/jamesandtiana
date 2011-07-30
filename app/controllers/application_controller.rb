@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
        
       current_user.registries.each do |registry|
         if registry.when > Time.zone.now
-          return "/#{registry.permalink}/information"
+          return celebration_path(registry)
         end
       end
       
