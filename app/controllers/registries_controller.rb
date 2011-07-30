@@ -101,7 +101,7 @@ class RegistriesController < ApplicationController
   def introduction
     @registry = Registry.find(@registry_id)
     @user_session = UserSession.new
-    session[:return_to] = url_for(:registry_permalink => @registry.permalink)
+    session[:return_to] = celebration_path(@registry)
 
     respond_to do |format|
       format.html # introduction.html.erb
@@ -116,7 +116,7 @@ class RegistriesController < ApplicationController
     rsvp_params = params[:rsvp]
     rsvp = Rsvp.find_or_create_by_registry_id_and_user_id(@registry.id, current_user.id)
     
-    session[:return_to] = url_for(:registry_permalink => @registry.permalink)
+    session[:return_to] = celebration_path(@registry)
 
     respond_to do |format|
       if rsvp.update_attributes(rsvp_params)

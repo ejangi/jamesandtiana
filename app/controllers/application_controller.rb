@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
     def permission_denied
       flash[:error] = "Sorry, you are not allowed to access that page"
-      redirect_back_or_default root_url
+      redirect_back_or_default login_url
     end
 
   private
