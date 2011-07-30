@@ -18,7 +18,8 @@ namespace :app do
     end
     
     [
-      { :name => "James Angus", :phone => "0409359315", :email => "ejangidotcom@gmail.com", :street => "59 Almeida St", :suburb => "Indooroopilly", :postcode => "4068", :password => "433292", :password_confirmation => "433292" }
+      { :name => "James Angus", :phone => "0409359315", :email => "ejangidotcom@gmail.com", :street => "59 Almeida St", :suburb => "Indooroopilly", :postcode => "4068", :password => "433292", :password_confirmation => "433292" },
+      { :name => "Tiana Robinson", :phone => "0407398476", :email => "tiana.caryn@gmail.com", :street => "4/46 Gaythorne Rd", :suburb => "Gaythorne", :postcode => "4051", :password => "359315", :password_confirmation => "359315" }
     ].each do |attributes|
       user = User.find_or_create_by_email(attributes)
       registries = Registry.all
