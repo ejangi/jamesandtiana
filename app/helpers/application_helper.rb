@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def public?
-    if ! Rails.env.production?
+    if !Rails.env.production? || (!current_user.nil? && current_user.role_symbols.include?(:admin))
       return true
     end
     
