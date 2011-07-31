@@ -4,7 +4,7 @@ class CreateRsvps < ActiveRecord::Migration
       t.references  :user
       t.references  :registry
       t.boolean     :attending, :default => false
-      t.integer     :number_of_guests
+      t.integer     :number_of_guests, :default => 1
       t.text        :dietary_requirements
       t.timestamps
     end

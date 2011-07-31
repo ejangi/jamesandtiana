@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20110731004558) do
     t.integer  "user_id"
     t.integer  "registry_id"
     t.boolean  "attending",            :default => false
-    t.integer  "number_of_guests"
+    t.integer  "number_of_guests",     :default => 1
     t.text     "dietary_requirements"
     t.datetime "created_at"
     t.datetime "updated_at"
