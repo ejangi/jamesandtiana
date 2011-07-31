@@ -8,4 +8,8 @@ class Contribution < ActiveRecord::Base
   scope :by_amount, lambda {
     order("amount DESC")
   }
+  
+  def amount=(amount)
+    write_attribute(:amount, amount.to_s.gsub(/^[^0-9\.]/, ''))
+  end
 end

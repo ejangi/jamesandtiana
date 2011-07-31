@@ -8,7 +8,15 @@ class Gift < ActiveRecord::Base
     contributions.sum(:amount)
   end
   
-  def contributed?
+  def users_contributed
+    contributions.collect { |c| c.user_id }
+  end
+  
+  def contributed?(user=nil)
+    if !user.nil? && users_contributed.include?(user.id)
+      return false
+    end
+    
     if self.price > amount_contributed
       return false
     else

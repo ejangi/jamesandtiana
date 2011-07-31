@@ -66,6 +66,7 @@ Jamesandtiana::Application.routes.draw do
     resources :gifts do
       get 'contribute'
       put 'contribution'
+      post 'contribution'
     end
   end
   resources :gifts

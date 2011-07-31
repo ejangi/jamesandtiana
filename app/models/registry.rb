@@ -5,6 +5,10 @@ class Registry < ActiveRecord::Base
   has_many :users, :through => :admissions
   has_many :rsvps
   
+  mount_uploader :map_photo, RegistryMapPhotoUploader
+  
+  validates_presence_of :permalink
+  
   scope :list, lambda {
     order("created_at ASC")
   }

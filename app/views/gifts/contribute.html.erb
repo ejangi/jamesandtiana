@@ -14,11 +14,11 @@
 	<% end %>
 
 	<dl>
-		<dt><%= f.label :amount %></dt>
-		<dd><%= f.text_field :amount %></dd>
+		<dt><%= f.label :amount %><span class="tip">(You can change this at any time)</span></dt>
+		<dd><%= f.text_field :amount, { :value => number_to_currency(@contribution.amount) } %></dd>
 	</dt>
 	
 	<div class="actions">
-	    <%= f.submit %>
+	    <%= f.submit "Submit Contribution" %>
 	  </div>
 <% end %>

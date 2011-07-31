@@ -4,7 +4,7 @@ class CreateContributions < ActiveRecord::Migration
       t.references  :registry
       t.references  :gift
       t.references  :user
-      t.decimal     :amount
+      t.decimal     :amount, :precision => 10, :scale => 2
       t.timestamps
     end
   end

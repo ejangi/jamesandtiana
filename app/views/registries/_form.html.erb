@@ -1,4 +1,4 @@
-<%= form_for(@registry, :url => (@registry.id.nil? ? new_celebration_path : edit_celebration_path(@registry))) do |f| %>
+<%= form_for(@registry, :url => (@registry.id.nil? ? celebrations_path : celebration_path(@registry)), :html => { :multipart => true }) do |f| %>
 	<% if @registry.errors.any? %>
 	  <div id="error_explanation">
 	    <h2><%= pluralize(@registry.errors.count, "error") %> prohibited this registry from being saved:</h2>
@@ -15,11 +15,32 @@
 		<dt><%= f.label :title %></dt>
 		<dd><%= f.text_field :title %></dd>
 		
-		<dt><%= f.label :introduction %></dt>
-		<dd><%= f.text_area :introduction %></dd>
-
 		<dt><%= f.label :when %></dt>
 		<dd class="datetime"><%= f.datetime_select :when %></dd>
+		
+		<dt><%= f.label :introduction %></dt>
+		<dd><%= f.text_area :introduction, :rows => 3 %></dd>
+		
+		<dt><%= f.label :details, "Full Details" %></dt>
+		<dd><%= f.text_area :details, :rows => 3 %></dd>
+		
+		<dt><%= f.label :address %>
+		<dd><%= f.text_area :address, :rows => 2 %>
+			
+		<dt><%= f.label :gift_registry_introduction %></dt>
+		<dd><%= f.text_area :gift_registry_introduction, :rows => 3 %></dd>
+		
+		<fieldset class="photo">
+			<% if !@registry.map_photo_url.to_s.blank? %>
+			<div class="existing"><%= image_tag(@registry.map_photo_url(:onehundred).to_s) %></div>
+			<% end %>
+			
+			<dt><%= f.label :map_photo %></dt>
+			<dd><%= f.file_field :map_photo %></dd>
+		</fieldset>
+		
+		<dt><%= f.label :map_url %></dt>
+		<dd><%= f.text_field :map_url %></dd>
 		
 		<dd><%= f.check_box :show_number_of_guests %> <%= f.label :show_number_of_guests %></dd>
 		

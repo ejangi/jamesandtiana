@@ -94,8 +94,8 @@ class GiftsController < ApplicationController
       return
     end
     
-    @contribution = Contribution.find_or_create_by_registry_id_and_gift_id_and_user_id(@registry.id, @gift.id, current_user.id)
-    @contribution.amount = @gift.price if @contribution.amount.nil?
+    @contribution = Contribution.find_or_initialize_by_registry_id_and_gift_id_and_user_id(@registry.id, @gift.id, current_user.id)
+    @contribution.amount = @gift.price.to_i if @contribution.amount.nil?
     
     respond_to do |format|
       format.html # contribute.html.erb

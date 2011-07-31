@@ -38,13 +38,6 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 /**
 	Page Layout
 **/
-html,
-body {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
 body {
 	background: #fcfbf9;
 	font-family: 'Lora', serif;
@@ -287,6 +280,7 @@ h1 {
 }
 
 	h1 span.new,
+	h1 span.edit,
 	h2 span.edit {
 		display: inline-block;
 		padding: 0 0 0 15px;
@@ -334,6 +328,10 @@ h2 {
 /**
 	Gift Registry
 **/
+#gift-registry-introduction {
+	margin: 0 0 20px 0;
+}
+
 .gift {
 	padding: 10px;
 	margin: 0 0 10px 0;
@@ -480,6 +478,8 @@ form dl {
 	
 	form dt span.tip {
 		display: block;
+		margin: 2px 0 5px 0;
+		font-size: 11px;
 		font-weight: normal;
 		color: #777;
 	}
@@ -599,6 +599,27 @@ form dl {
 			display: inline-block;
 			padding: 0 5px;
 			color: #a3894a;
+		}
+		
+	form fieldset {
+		border: 0;
+	}
+	
+	form fieldset:after {
+		display: block;
+	    clear: both;
+	    content: ".";
+	    height: 0;
+	    visibility: hidden;
+	}
+	
+	form fieldset.photo {
+		margin: 20px 0 0 0;
+	}
+	
+		form fieldset.photo .existing {
+			float: left;
+			margin: 0 10px 0 0;
 		}
 	
 	

@@ -6,7 +6,7 @@
   <tr>
     <th>Title</th>
     <th>When</th>
-    <th>Introduction</th>
+    <th>Address</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,7 +15,7 @@
   <tr>
     <td><%= registry.title %></td>
 	<td><%= l registry.when, :format => :short %></td>
-    <td><%= registry.introduction %></td>
+    <td><%= registry.address %></td>
     <td><%= link_to 'Edit', edit_celebration_path(registry) %></td>
     <td><%= link_to 'Destroy', celebration_path(registry), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

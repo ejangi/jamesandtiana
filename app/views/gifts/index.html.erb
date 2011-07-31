@@ -1,7 +1,11 @@
 <%= render :partial => "shared/adminmenu" if permitted_to? :index, :users %>
 <%= render :partial => "shared/submenu" %>
 
-<h1><% if !@registry.nil? then %><%= @registry.title %> <% end %>Gift Registry<% if permitted_to? :new, :gifts %> <span class="new"><%= link_to 'New Gift', new_gift_path %></span><% end %></h1>
+<h1><% if !@registry.nil? then %><%= @registry.title %> <% end %><small>Gift Registry</small><% if permitted_to? :new, :gifts %> <span class="new"><%= link_to 'New Gift', new_gift_path %></span><% end %></h1>
+
+<div id="gift-registry-introduction">
+	<%= simple_format(@registry.gift_registry_introduction) %>
+</div>
 
 <div id="gift-registry">
 
@@ -15,7 +19,7 @@
 	    <div class="colour"><strong>Colour:</strong> <small><%= (!gift.colour.nil?) ? gift.colour : "N/A" %></small></div>
 	    
 		<div class="contribute">
-			<% if gift.contributed? %>
+			<% if gift.contributed?(current_user) %>
 				<p class="contributed">This gift has already been contributed<p>
 			<% else %>
 				<p class="make"><%= link_to("Contribute to this gift", celebration_gift_contribute_path(@registry, gift), :class => :button) if !@registry.nil? %></p>
