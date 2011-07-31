@@ -61,7 +61,7 @@ namespace :uploads do
     I don't know in advance selected stage.
   EOD
   task :register_dirs do
-    set :uploads_dirs,    %w(uploads uploads/tmp uploads/user).map { |d| "#{d}" }
+    set :uploads_dirs,    %w(uploads uploads/tmp uploads/gift uploads/registry).map { |d| "#{d}" }
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 

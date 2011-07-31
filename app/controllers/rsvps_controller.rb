@@ -46,7 +46,7 @@ class RsvpsController < ApplicationController
 
     respond_to do |format|
       if @rsvp.save
-        format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully created.') }
+        format.html { redirect_to(rsvps_path, :notice => 'Rsvp was successfully created.') }
         format.xml  { render :xml => @rsvp, :status => :created, :location => @rsvp }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class RsvpsController < ApplicationController
 
     respond_to do |format|
       if @rsvp.update_attributes(params[:rsvp])
-        format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully updated.') }
+        format.html { redirect_to(rsvps_path, :notice => 'Rsvp was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
