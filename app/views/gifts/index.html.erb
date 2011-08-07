@@ -3,9 +3,11 @@
 
 <h1><% if !@registry.nil? then %><%= @registry.title %> <% end %><small>Gift Registry</small><% if permitted_to? :new, :gifts %> <span class="new"><%= link_to 'New Gift', new_gift_path %></span><% end %></h1>
 
+<% if !@registry.nil? %>
 <div id="gift-registry-introduction">
 	<%= simple_format(@registry.gift_registry_introduction) %>
 </div>
+<% end %>
 
 <div id="gift-registry">
 
