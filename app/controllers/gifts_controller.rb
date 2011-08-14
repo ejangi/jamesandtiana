@@ -126,6 +126,23 @@ class GiftsController < ApplicationController
     end
   end
   
+  # POST /gifts/orderlike
+  def orderlike
+    orderlike = params[:orderlike].to_a
+    
+    respond_to do |format|
+      if Gift.ordering_like(orderlike)
+        @gifts = Gift.find(:all)
+        format.html { redirect_to(gifts_path, :notice => 'Ordered') }
+        format.xml  { head :ok }
+      else
+        @gifts = Gift.find(:all)
+        format.html { render :action => "index" }
+        format.xml  { render :xml => { :error => "Could not be ordered" }, :status => 500 }
+      end
+    end
+  end
+  
   private
   
     def get_registry
