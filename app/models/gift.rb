@@ -1,8 +1,10 @@
 class Gift < ActiveRecord::Base
-  attr_accessible :photo
+  attr_accessible :title, :description, :store, :colour, :quantity, :price, :photo
   belongs_to :registry
   has_many :contributions
   mount_uploader :photo, GiftPhotoUploader
+  
+  validates_presence_of :title
   
   def amount_contributed
     contributions.sum(:amount)

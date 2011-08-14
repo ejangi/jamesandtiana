@@ -7,7 +7,7 @@ module ApplicationHelper
     
     today = DateTime.now
     release = DateTime.parse("2011-08-10 23:59:00")
-    return (today == release)
+    return (today > release)
   end
   
   def mainmenu
