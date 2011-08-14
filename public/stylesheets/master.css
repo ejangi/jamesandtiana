@@ -369,11 +369,14 @@ h2 {
 	.gift .store,
 	.gift .colour,
 	.gift .quantity,
-	.gift .price,
-	.gift .contribute {
+	.gift .price {
 		float: left;
-		width: 12%;
+		width: 15%;
 		margin : 0 1% 0 0;
+	}
+	
+	.gift .quantity {
+		width: 12%;
 	}
 	
 	.gift .store,
@@ -383,7 +386,8 @@ h2 {
 	
 	.gift .contribute {
 		float: right;
-		margin: 5px 0 5px 15px;
+		width: 12%;
+		margin: 0 0 5px 15px;
 		text-align: center;
 	}
 	

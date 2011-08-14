@@ -24,7 +24,7 @@
 			<% if gift.contributed?(current_user) %>
 				<p class="contributed">This gift has already been contributed<p>
 			<% else %>
-				<p class="make"><%= link_to("Contribute to this gift", celebration_gift_contribute_path(@registry, gift), :class => :button) if !@registry.nil? %></p>
+				<p class="make"><%= link_to("Reserve or contribute to this gift", celebration_gift_contribute_path(@registry, gift), :class => :button) if !@registry.nil? %></p>
 			<% end %>
 		</div>
 		<div class="description"><%= (!gift.description.nil?) ? simple_format(gift.description) : "N/A" %></div>
