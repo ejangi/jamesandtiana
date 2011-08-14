@@ -5,7 +5,7 @@
 <h2><%= @rsvps.first.registry.title %></h2>
 <table>
   <tr>
-    <th>User</th>
+    <th>Guest</th>
     <th>Registry</th>
     <th>Attending</th>
     <th>Number of guests</th>
@@ -16,13 +16,13 @@
 
 <% reg = @rsvps.first.registry.permalink %>
 <% @rsvps.each do |rsvp| %>
-	<% if reg != rsvp.registry.permalink %>
+	<% if reg.to_s != rsvp.registry.permalink.to_s %>
   </tr>
 </table>
 <h2><%= rsvp.registry.title %></h2>
 <table>
   <tr>
-    <th>User</th>
+    <th>Guest</th>
     <th>Registry</th>
     <th>Attending</th>
     <th>Number of guests</th>

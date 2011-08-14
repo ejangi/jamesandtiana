@@ -12,7 +12,7 @@
 	<% end %>
 	
 	<dl>
-		<dt><%= f.label :user %></dt>
+		<dt><%= f.label :user, "Guest" %></dt>
     	<dd><%= select("contribution", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {:include_blank => '- Select -'}) %></dd>
 
 		<dt><%= f.label :registry %></dt>
