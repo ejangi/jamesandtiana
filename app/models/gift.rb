@@ -17,7 +17,7 @@ class Gift < ActiveRecord::Base
       return false
     end
     
-    if self.price > amount_contributed
+    if !price.nil? && price > amount_contributed
       return false
     else
       return true

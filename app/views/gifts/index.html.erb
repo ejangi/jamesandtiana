@@ -13,7 +13,7 @@
 
 <% @gifts.each do |gift| %>
 	<div id="gift-<%= gift.id %>" class="gift<%= " contributed" if gift.contributed? %>">
-		<div class="photo"><%= photo_tag(gift, :onehundred) %></div>
+		<div class="photo"><%= photo_tag(gift, :onehundredsquare) %></div>
     	<h2><%= gift.title %><% if permitted_to? :edit, gift %> <span class="edit"><%= link_to "Edit", edit_gift_path(gift) %></span><% end %></h2>
 		<div class="price"><strong>Price:</strong> <small><%= (!gift.price.nil?) ? number_to_currency(gift.price) : "N/A" %></small></div>
 		<div class="quantity"><strong>Quantity:</strong> <small><%= (!gift.quantity.nil?) ? gift.quantity : "N/A" %></small></div>
