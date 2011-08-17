@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110807071150) do
+ActiveRecord::Schema.define(:version => 20110817111126) do
 
   create_table "admissions", :force => true do |t|
     t.integer  "registry_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110807071150) do
     t.integer  "registry_id"
     t.integer  "gift_id"
     t.integer  "user_id"
-    t.decimal  "amount",      :precision => 10, :scale => 0
+    t.decimal  "amount",      :precision => 10, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(:version => 20110807071150) do
     t.datetime "updated_at"
     t.string   "photo"
     t.integer  "ordering",                                   :default => 0
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "permalink"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "registries", :force => true do |t|
@@ -74,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20110807071150) do
     t.integer  "user_id"
     t.integer  "registry_id"
     t.boolean  "attending",            :default => false
-    t.integer  "number_of_guests",     :default => 1
+    t.integer  "number_of_guests"
     t.text     "dietary_requirements"
     t.datetime "created_at"
     t.datetime "updated_at"

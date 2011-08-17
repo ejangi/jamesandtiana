@@ -76,6 +76,7 @@ Jamesandtiana::Application.routes.draw do
   end
   resources :contributions
   resources :rsvps
+  resources :pages
   resource :user_session
   resource :account, :controller => "users"
   
