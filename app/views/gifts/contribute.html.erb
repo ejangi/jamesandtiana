@@ -1,4 +1,6 @@
-<h1>Make a contribution towards <small>"<%= @gift.title %>"</small></h1>
+<h1>Pledge your contribution towards <small>"<%= @gift.title %>"</small></h1>
+
+<p>Please remember to bring your present with you on the day as we aren't able to take payments online.<br />If you pledge the entire amount of a gift, it will be marked as <em>reserved</em>.</p>
 
 <%= form_for(@contribution, :url => celebration_gift_contribution_path(@registry, @gift)) do |f| %>
 	<% if @contribution.errors.any? %>
