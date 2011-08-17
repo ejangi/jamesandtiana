@@ -4,6 +4,7 @@
 		<ul>
 			<li<%= ' class="active"'.html_safe if current_page?(celebration_home_path(@registry)) %>><%= link_to "The Day", celebration_home_path(@registry) %></li>
 			<li<%= ' class="active"'.html_safe if current_page?(celebration_gifts_path(@registry)) %>><%= link_to "Gift Registry", celebration_gifts_path(@registry) %></li>
+			<%= pages_menu %>
 		</ul>
 	</div>
 </div>

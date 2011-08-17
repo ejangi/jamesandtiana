@@ -68,4 +68,17 @@ module ApplicationHelper
     return simple_format(notices)
   end
   
+  def pages_menu
+    pages = Page.all
+    string = ""
+    pages.each do |page|
+      string << '<li'
+      string << ' class="active"'.html_safe if current_page?(page_path(page))
+      string << '>'
+      string << link_to(page.title, page_path(page))
+      string << '</li>'
+    end
+    return string.html_safe
+  end
+  
 end
