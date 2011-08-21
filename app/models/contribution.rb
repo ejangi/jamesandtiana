@@ -10,6 +10,6 @@ class Contribution < ActiveRecord::Base
   }
   
   def amount=(amount)
-    write_attribute(:amount, amount.to_s.gsub(/^[^0-9\.]/, ''))
+    write_attribute(:amount, amount.to_s.gsub(/[^0-9\.]/, ''))
   end
 end
