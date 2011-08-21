@@ -27,6 +27,7 @@ authorization do
     has_permission_on :celebrations, :to => [:show, :introduction, :rsvp]
     has_permission_on :account, :to => [:show]
     has_permission_on :users, :to => [:show]
+    has_permission_on :pages, :to => [:show]
   end
   
   role :wedding do

@@ -379,6 +379,7 @@ h2 {
 		float: left;
 		margin: 5px 0;
 		min-width: 50%;
+		max-width: 70%;
 	}
 	
 		.gift .description p,
@@ -752,6 +753,12 @@ table {
 	#registry-details {
 		float: none;
 		width: auto !important;
+	}
+	
+	.gift .contribute {
+		float: left;
+		width: 60%;
+		margin: 15px 0 5px 0;
 	}
 	
 	form input[type="text"],
