@@ -1,3 +1,13 @@
+<% content_for :head do %>
+	<%= javascript_include_tag "jquery.cycle" %>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('.slideshow').cycle({
+			fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+		});
+	});
+	</script>
+<% end %>
 <h1><%= @page.title %></h1>
 
 <%= simple_format(@page.content) %>

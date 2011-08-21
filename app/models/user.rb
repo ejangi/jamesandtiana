@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   acts_as_authentic
   
   has_many :contributions
-  has_many :assignments
-  has_many :roles, :through => :assignments
+  has_many :assignments, :group => "role_id"
+  has_many :roles, :through => :assignments, :group => "name"
   has_many :admissions
   has_many :registries, :through => :admissions
   has_many :rsvps
