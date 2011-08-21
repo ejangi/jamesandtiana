@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   
   before_save :generate_key, :set_roles
   
+  def self.find_by_role(role)
+    find_by_sql(["SELECT users.* FROM users
+    LEFT JOIN assignments ON (assignments.user_id = users.id)
+    LEFT JOIN roles ON (assignments.role_id = roles.id)
+    WHERE roles.name = ?
+    GROUP BY users.id", role.to_s])
+  end
+  
   def admit_to_registry(registry)
     self.admissions.find_or_create_by_registry_id(registry.id)
   end
