@@ -56,6 +56,7 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 	Page Layout
 **/
 body {
+	color: #555555;
 	background: #fcfbf9;
 	font-family: 'Lora', serif;
 }
@@ -290,6 +291,11 @@ h2 small {
 
 #content a {
 	color: #C2B59B;
+}
+
+#content p a,
+#content li a {
+	color: #A28D64;
 }
 
 h1 {
