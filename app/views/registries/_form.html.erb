@@ -31,6 +31,17 @@
 		<dd><%= f.text_area :gift_registry_introduction, :rows => 3 %></dd>
 		
 		<fieldset class="photo">
+			<% if !@registry.photo_url.to_s.blank? %>
+			<div class="existing"><%= image_tag(@registry.photo_url(:onehundred).to_s) %></div>
+			<% end %>
+			
+			<dt><%= f.label :photo %></dt>
+			<dd><%= f.file_field :photo %></dd>
+		</fieldset>
+		
+		
+		
+		<fieldset class="photo">
 			<% if !@registry.map_photo_url.to_s.blank? %>
 			<div class="existing"><%= image_tag(@registry.map_photo_url(:onehundred).to_s) %></div>
 			<% end %>

@@ -34,5 +34,11 @@
 		<h1>Will you be joining us?</h1>
 		
 		<%= render :partial => "rsvp" %>
+		
+		<% if !@registry.photo_url.to_s.blank? %>
+		<div class="photo">
+			<%= image_tag(@registry.photo_url(:fourtwenty).to_s) %>
+		</div>
+		<% end %>
 	</div>
 </div>

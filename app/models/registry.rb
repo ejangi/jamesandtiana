@@ -1,4 +1,6 @@
 class Registry < ActiveRecord::Base
+  attr_accessible :title, :introduction, :when, :permalink, :show_number_of_gifts, :show_dietary_requirements, :map_photo, :map_url, :address, :details, :gift_registry_introduction, :photo
+  
   has_many :gifts
   has_many :contributions
   has_many :admissions
@@ -6,6 +8,7 @@ class Registry < ActiveRecord::Base
   has_many :rsvps
   
   mount_uploader :map_photo, RegistryMapPhotoUploader
+  mount_uploader :photo, RegistryPhotoUploader
   
   validates_presence_of :permalink
   
