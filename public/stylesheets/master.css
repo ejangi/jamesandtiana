@@ -467,6 +467,19 @@ body.pages .photos {
 	height: 200px;
 	margin: 0 0 10px 10px;
 }
+
+body.pages p .emailaddress {
+	display: block;
+	padding: 20px 20px;
+	background: #efebe0;
+	font-size: 24px;
+	text-align: center;
+}
+
+body.pages img.right {
+	float: right;
+	margin: 0 0 10px 10px;
+}
 		
 		
 		
