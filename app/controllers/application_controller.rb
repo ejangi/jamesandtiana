@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
     
     def logged_in_url 
       if !current_user && @user_session
-        current_user = @user_session.user
+        @current_user = current_user_session && current_user_session.user
       end
        
       current_user.registries.each do |registry|

@@ -40,6 +40,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(user, true)
     if @user_session.save
       redirect_to logged_in_url
+      return
     else
       render :action => :new
     end
