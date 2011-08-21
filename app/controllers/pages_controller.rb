@@ -15,7 +15,12 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @page = Page.find_by_permalink(params[:id])
+    begin
+      @page = Page.find_by_permalink(params[:id])
+    rescue Exception => e
+      render "404"
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb
