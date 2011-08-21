@@ -50,7 +50,8 @@ class ApplicationController < ActionController::Base
     end
     
     def logged_in_url 
-      if !current_user && @user_session
+      if current_user.nil? || current_user.email.nil?
+        @current_user_session = UserSession.find
         @current_user = current_user_session && current_user_session.user
       end
        
