@@ -21,11 +21,25 @@ class Gift < ActiveRecord::Base
       return false
     end
     
-    if !price.nil? && price > amount_contributed
+    if !price.nil? && total > amount_contributed
       return false
     else
       return true
     end
+  end
+  
+  def total
+    if price.nil?
+      return 0
+    end
+    
+    q = quantity.to_i
+    
+    if q < 1
+      q = 1
+    end
+    
+    return q * price
   end
   
   def self.ordering_like(id_array)  
