@@ -28,18 +28,29 @@ class Gift < ActiveRecord::Base
     end
   end
   
+  def quantity
+    q = read_attribute(:quantity).to_i
+    if q < 1
+      q = 1
+    end
+    return q
+  end
+  
   def total
     if price.nil?
       return 0
     end
     
-    q = quantity.to_i
-    
-    if q < 1
-      q = 1
-    end
-    
-    return q * price
+    return quantity * price
+  end
+  
+  def contribution_remaining
+    rem = (total - amount_contributed)
+  end
+  
+  def contribution_quantity_remaining
+    rem = contribution_remaining
+    rem_quantity = (rem / price).floor
   end
   
   def self.ordering_like(id_array)  

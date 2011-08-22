@@ -95,7 +95,7 @@ class GiftsController < ApplicationController
     end
     
     @contribution = Contribution.find_or_initialize_by_registry_id_and_gift_id_and_user_id(@registry.id, @gift.id, current_user.id)
-    @contribution.amount = @gift.price.to_i if @contribution.amount.nil?
+    @contribution.amount = @gift.contribution_remaining if @contribution.amount.nil?
     
     respond_to do |format|
       format.html # contribute.html.erb

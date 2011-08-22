@@ -484,6 +484,10 @@ body.pages img.right {
 body.home #submenu {
 	margin: 10px 0 0 0;
 }
+
+body.gifts.contribute form dl {
+	max-width: 350px;
+}
 		
 		
 		
@@ -550,6 +554,13 @@ form dl {
 		margin: 0 0 20px 0;
 		padding: 0;
 	}
+	
+		form dd span.tip {
+			float: left;
+			font-size: 11px;
+			font-weight: normal;
+			color: #777;
+		}
 	
 	form dd.submit {
 		text-align: right;

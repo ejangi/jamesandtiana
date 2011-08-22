@@ -16,8 +16,12 @@
 	<% end %>
 
 	<dl>
-		<dt><%= f.label :amount %><span class="tip">(You can change this at any time)</span></dt>
+		<dt><%= f.label :amount %><span class="tip"><% if @gift.quantity > 1 && @gift.contribution_quantity_remaining.to_i > 0 %><%= @gift.contribution_quantity_remaining.to_i %> available at <%= number_to_currency(@gift.price) %> each. <% elsif @gift.contribution_remaining.to_i > 0 %><%= number_to_currency(@gift.contribution_remaining) %> remaining. <% end %>You can change this at any time.</span></dt>
+		<% if @gift.quantity > 1 && false %>
+		<dd><%= select :contribution, :amount, options_for_contribution_amount(@gift, @contribution) %></dd>
+		<% else %>
 		<dd><%= f.text_field :amount, { :value => number_to_currency(@contribution.amount) } %></dd>
+		<% end %>
 	</dt>
 	
 	<div class="actions">
