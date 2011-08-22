@@ -2,7 +2,7 @@
 
 <h1>Listing RSVPs<% if permitted_to? :new, :rsvps %> <span class="new"><%= link_to 'New RSVP', new_rsvp_path %></span><% end %></h1>
 
-<h2><%= @rsvps.first.registry.title %></h2>
+<h2><%= @rsvps.first.registry.title %> <small>(<%= @rsvps.first.registry.people_attending %>)</small></h2>
 <table>
   <tr>
     <th>Guest</th>
@@ -19,7 +19,7 @@
 	<% if reg.to_s != rsvp.registry.permalink.to_s %>
   </tr>
 </table>
-<h2><%= rsvp.registry.title %></h2>
+<h2><%= rsvp.registry.title %> <small>(<%= rsvp.registry.people_attending %>)</small></h2>
 <table>
   <tr>
     <th>Guest</th>
@@ -30,6 +30,7 @@
     <th></th>
     <th></th>
   </tr>
+	<% reg = rsvp.registry.permalink %>
 	<% end %>
   <tr>
     <td><%= rsvp.user.name %></td>

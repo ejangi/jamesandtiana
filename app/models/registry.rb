@@ -24,6 +24,10 @@ class Registry < ActiveRecord::Base
     order("when DESC")
   }
   
+  def people_attending
+    rsvps.attending.sum(:number_of_guests)
+  end
+  
   def self.permalink_list
     registries = self.all
     list = registries.collect { |r| r.permalink }
