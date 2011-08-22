@@ -18,6 +18,11 @@
 		<dt><%= f.label :email %></dt>
 		<dd><%= f.text_field :email %></dd>
 		
+		<% if !@user.key.nil? %>
+		<dt><%= f.label :key %></dt>
+		<dd><%= link_to @user.key, root_url + @user.key %></dd>
+		<% end %>
+		
 		<dt><%= f.label :password %></dt>
 		<dd><%= f.password_field :password %></dd>
 		

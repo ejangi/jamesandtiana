@@ -405,6 +405,7 @@ h2 {
 	
 	.gift .quantity {
 		width: 12%;
+		text-align: center;
 	}
 	
 	.gift .store,
@@ -487,6 +488,12 @@ body.home #submenu {
 
 body.gifts.contribute form dl {
 	max-width: 350px;
+}
+
+body.edit #content,
+body.new #content {
+	margin-left: 15px;
+	margin-right: 15px;
 }
 		
 		
@@ -782,6 +789,11 @@ table {
 		width: 480px;
 	}
 	
+	body.pages #content {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	
 	#mainmenu {
 		margin: 0 0 -1px 0;
 	}
@@ -800,6 +812,12 @@ table {
 	#registry-details {
 		float: none;
 		width: auto !important;
+	}
+	
+	.gift .description {
+		clear: both;
+		float: none;
+		max-width: 100% !important;
 	}
 	
 	.gift .contribute {
