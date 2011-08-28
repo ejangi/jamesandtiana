@@ -5,7 +5,7 @@ class Rsvp < ActiveRecord::Base
   default_scope order("rsvps.registry_id ASC, rsvps.attending DESC, rsvps.number_of_guests DESC")
   
   scope :by_attending, lambda {
-    includes(:registries).order("registries.id, rsvps.attending DESC")
+    includes(:registry).order("registries.id, rsvps.attending DESC")
   }
   
   scope :attending, where("rsvps.attending = 1")
