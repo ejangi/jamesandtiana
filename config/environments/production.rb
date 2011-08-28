@@ -47,9 +47,4 @@ Jamesandtiana::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[jamesandtiana.com] ",
-    :sender_address => %{"James & Tiana" <mrandmrs@jamesandtiana.com>},
-    :exception_recipients => %w{james@ejangi.com}
 end
