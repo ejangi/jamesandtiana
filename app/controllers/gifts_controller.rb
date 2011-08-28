@@ -2,8 +2,6 @@ class GiftsController < ApplicationController
   before_filter :get_registry
   filter_access_to :all
   
-  caches_action :index
-  
   # GET /gifts
   # GET /gifts.xml
   def index
@@ -48,7 +46,6 @@ class GiftsController < ApplicationController
     @gift = Gift.new(params[:gift])
     
     expire_fragment('gifts_list')
-    expire_action :action => :index
 
     respond_to do |format|
       if @gift.save
@@ -67,7 +64,6 @@ class GiftsController < ApplicationController
     @gift = Gift.find(params[:id])
     
     expire_fragment('gifts_list')
-    expire_action :action => :index
 
     respond_to do |format|
       if @gift.update_attributes(params[:gift])
@@ -87,7 +83,6 @@ class GiftsController < ApplicationController
     @gift.destroy
     
     expire_fragment('gifts_list')
-    expire_action :action => :index
 
     respond_to do |format|
       format.html { redirect_to(gifts_url) }
@@ -130,7 +125,6 @@ class GiftsController < ApplicationController
       if @contribution.update_attributes(params[:contribution])
         
         expire_fragment('gifts_list')
-        expire_action :action => :index
         
         format.html { redirect_to(celebration_gifts_path(@registry), :notice => 'Thank you for your contribution.') }
         format.xml  { head :ok }
@@ -149,7 +143,6 @@ class GiftsController < ApplicationController
       if Gift.ordering_like(orderlike)
         
         expire_fragment('gifts_list')
-        expire_action :action => :index
         
         @gifts = Gift.find(:all)
         format.html { redirect_to(gifts_path, :notice => 'Ordered') }
