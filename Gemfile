@@ -24,7 +24,7 @@ gem 'capistrano'
 #			make install
 gem 'rmagick'
 gem 'carrierwave'
-gem 'exception_notification'
+gem 'exception_notification', :require => "exception_notifier"
 
 group :development, :test do
 	gem 'rspec-rails'
