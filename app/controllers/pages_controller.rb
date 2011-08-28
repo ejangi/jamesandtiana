@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   filter_access_to :all
   
+  caches_page :show
+  
   # GET /pages
   # GET /pages.xml
   def index
@@ -51,6 +53,9 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
+        expire_page :action => :show
+        expire_page :controller => :home, :action => :index
+        
         format.html { redirect_to(@page, :notice => 'Page was successfully created.') }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
@@ -67,6 +72,9 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
+        expire_page :action => :show
+        expire_page :controller => :home, :action => :index
+        
         format.html { redirect_to(@page, :notice => 'Page was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -81,6 +89,8 @@ class PagesController < ApplicationController
   def destroy
     @page = Page.find_by_permalink(params[:id])
     @page.destroy
+    expire_page :action => :show
+    expire_page :controller => :home, :action => :index
 
     respond_to do |format|
       format.html { redirect_to(pages_url) }

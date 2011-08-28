@@ -12,7 +12,9 @@ Jamesandtiana::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
-  config.action_controller.perform_caching = false
+  # config.action_controller.perform_caching = false
+  config.action_controller.perform_caching = true
+  config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false

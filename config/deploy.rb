@@ -50,7 +50,9 @@ namespace :uploads do
   EOD
   task :symlink, :except => { :no_release => true } do
     run "rm -rf #{release_path}/public/uploads"
+    run "rm -rf #{release_path}/public/cache"
     run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+    run "ln -nfs #{shared_path}/cache #{release_path}/public/cache"
   end
 
   desc <<-EOD
@@ -61,7 +63,7 @@ namespace :uploads do
     I don't know in advance selected stage.
   EOD
   task :register_dirs do
-    set :uploads_dirs,    %w(uploads uploads/tmp uploads/gift uploads/registry).map { |d| "#{d}" }
+    set :uploads_dirs,    %w(uploads uploads/tmp uploads/gift uploads/registry public/cache).map { |d| "#{d}" }
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 
