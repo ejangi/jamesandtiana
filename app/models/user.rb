@@ -14,11 +14,7 @@ class User < ActiveRecord::Base
   
   before_save :generate_key, :set_roles
   
-  scope :absentees, lambda { find_by_sql("SELECT users.id, users.name, users.email, rsvps.attending
-  FROM users
-  LEFT JOIN rsvps ON rsvps.user_id = users.id
-  WHERE rsvps.attending IS NULL
-  GROUP BY users.id") }
+  scope :absentees, lambda { find_by_sql("SELECT users.* FROM users LEFT JOIN rsvps ON rsvps.user_id = users.id WHERE rsvps.attending IS NULL GROUP BY users.id") }
   
   
   
