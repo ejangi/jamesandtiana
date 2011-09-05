@@ -46,3 +46,21 @@
   </tr>
 <% end %>
 </table>
+
+<% if !@absentees.nil? && @absentees.count > 0 %>
+<h2>Guests who have not RSVP'd <small>(<%= @absentees.count %>)</small></h2>
+<table>
+  <tr>
+    <th>Guest</th>
+    <th>Email</th>
+	<th>Login URL</th>
+  </tr>
+	<% @absentees.each do |user| %>
+	<tr>
+	  <td><%= user.name %></td>
+	  <td><%= user.email %></td>
+	  <td><%= link_to user.key, root_url + user.key %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>

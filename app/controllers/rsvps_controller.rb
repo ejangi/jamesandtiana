@@ -5,6 +5,7 @@ class RsvpsController < ApplicationController
   # GET /rsvps.xml
   def index
     @rsvps = Rsvp.by_attending.all
+    @absentees = User.absentees
 
     respond_to do |format|
       format.html # index.html.erb
