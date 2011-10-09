@@ -4,7 +4,7 @@ class Gift < ActiveRecord::Base
   has_many :contributions
   mount_uploader :photo, GiftPhotoUploader
   
-  default_scope order("ordering ASC")
+  default_scope where("gifts.hidden = 0").order("gifts.ordering ASC")
   
   validates_presence_of :title
   

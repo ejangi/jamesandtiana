@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821031101) do
+ActiveRecord::Schema.define(:version => 20111009110540) do
 
   create_table "admissions", :force => true do |t|
     t.integer  "registry_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110821031101) do
     t.datetime "updated_at"
     t.string   "photo"
     t.integer  "ordering",                                   :default => 0
+    t.boolean  "hidden",                                     :default => false
   end
 
   create_table "pages", :force => true do |t|
