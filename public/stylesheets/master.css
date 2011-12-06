@@ -175,6 +175,11 @@ h2 small {
 		float: right;
 		margin: 0 20px 0 0;
 	}
+
+	#menu-bucksparty,
+	#menu-bridalshower {
+		display: none;
+	}
 	
 	.hascontent #mainmenu a {
 		border-bottom-width: 1px;
