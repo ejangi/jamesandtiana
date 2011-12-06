@@ -59,7 +59,7 @@ class RegistriesController < ApplicationController
 
     respond_to do |format|
       if @registry.save
-        format.html { redirect_to(@registry, :notice => 'Celebration was successfully created.') }
+        format.html { redirect_to(celebration_path(@registry), :notice => 'Celebration was successfully created.') }
         format.xml  { render :xml => @registry, :status => :created, :location => @registry }
       else
         format.html { render :action => "new" }
@@ -87,11 +87,11 @@ class RegistriesController < ApplicationController
   # DELETE /registries/1
   # DELETE /registries/1.xml
   def destroy
-    @registry = Registry.find(params[:id])
+    @registry = Registry.find(@registry_id)
     @registry.destroy
 
     respond_to do |format|
-      format.html { redirect_to(registries_url) }
+      format.html { redirect_to(celebrations_url) }
       format.xml  { head :ok }
     end
   end
