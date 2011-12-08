@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :assignments, :group => "role_id"
   has_many :roles, :through => :assignments, :group => "name"
   has_many :admissions
-  has_many :registries, :through => :admissions
+  has_many :registries, :through => :admissions, :order => "registries.when ASC"
   has_many :rsvps
   
   validates_presence_of :name
