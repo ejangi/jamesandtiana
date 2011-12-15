@@ -6,7 +6,7 @@ class Contribution < ActiveRecord::Base
   validates :amount, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => { :greater_than => 0, :less_than => 100000 }
   
   scope :by_amount, lambda {
-    order("amount DESC")
+    order("contributions.amount DESC")
   }
   
   def amount=(amount)

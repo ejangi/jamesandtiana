@@ -44,8 +44,6 @@ class GiftsController < ApplicationController
   # POST /gifts.xml
   def create
     @gift = Gift.new(params[:gift])
-    
-    expire_fragment('gifts_list')
 
     respond_to do |format|
       if @gift.save
@@ -62,8 +60,6 @@ class GiftsController < ApplicationController
   # PUT /gifts/1.xml
   def update
     @gift = Gift.find(params[:id])
-    
-    expire_fragment('gifts_list')
 
     respond_to do |format|
       if @gift.update_attributes(params[:gift])
@@ -81,8 +77,6 @@ class GiftsController < ApplicationController
   def destroy
     @gift = Gift.find(params[:id])
     @gift.destroy
-    
-    expire_fragment('gifts_list')
 
     respond_to do |format|
       format.html { redirect_to(gifts_url) }
@@ -124,8 +118,6 @@ class GiftsController < ApplicationController
     respond_to do |format|
       if @contribution.update_attributes(params[:contribution])
         
-        expire_fragment('gifts_list')
-        
         format.html { redirect_to(celebration_gifts_path(@registry), :notice => 'Thank you for your contribution.') }
         format.xml  { head :ok }
       else
@@ -141,8 +133,6 @@ class GiftsController < ApplicationController
     
     respond_to do |format|
       if Gift.ordering_like(orderlike)
-        
-        expire_fragment('gifts_list')
         
         @gifts = Gift.find(:all)
         format.html { redirect_to(gifts_path, :notice => 'Ordered') }

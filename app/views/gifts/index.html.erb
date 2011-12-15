@@ -10,7 +10,6 @@
 <% end %>
 
 <div id="gift-registry">
-<% cache('gifts_list') do %>
 	<% @gifts.each do |gift| %>
 		<div id="gift-<%= gift.id %>" class="gift<%= " contributed" if gift.contributed? %>">
 			<div class="photo"><%= photo_tag(gift, :onehundredsquare) %></div>
@@ -30,6 +29,5 @@
 			<div class="description"><%= (!gift.description.nil?) ? simple_format(gift.description) : "N/A" %></div>
 		</div>
 	<% end %>
-<% end %>
 
 </div>
