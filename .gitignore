@@ -4,3 +4,4 @@ log/*.log
 tmp/
 public/uploads/*
 pubilc/cache/*
+config/database.yml
